@@ -21,9 +21,9 @@ Lo ejecuta una tarea programada, sin nadie mirando: no hagas preguntas, decide y
 - **Reponer temario**: si quedan menos de 15 pendientes en la colección de la marca (o menos de 6 en `temasLibro`), al terminar las publicaciones investiga con vidIQ (herramientas `vidiq_outliers`, `vidiq_instagram_tiktok_outlier_search`, `vidiq_youtube_search`; pocas llamadas) qué temas y ganchos funcionan ahora en el nicho en español, y añade 25 temas nuevos con la misma forma de documento (ids siguientes: `t71…` / `e099…` / `tl58…`; `orden` a continuación del máximo; `estado: "pendiente"`; `base` = de dónde sale), sin duplicar nada existente (ni pendientes ni usados ni historial).
 
 ## 2. Producir cada reel
-Carpeta por reel: `~/hoy/NN` (NN = 01…05). Estilos y voces según ESTILOS.md (casillas 2 y 3 con la voz de Iván; 1, 4 y 5 con Kokoro). En modo tarde, genera primero las ilustraciones de Flow de la casilla 1 (FLOW.md) y luego produce todo.
+Carpeta por reel: `~/hoy/NN` (NN = 01…05). Estilos y voces según ESTILOS.md (casillas 2 y 3 con la voz de Iván; 1, 4 y 5 con Kokoro). Google Flow en pausa: casilla 1 = EXPLICADOR «rayos X».
 
-### Casillas 1–3 (motor propio)
+### Casillas 1–4 (motor propio)
 1. `mkdir -p ~/hoy/NN && cp -r ~/rp/fabrica/motor/* ~/hoy/NN/` y escribe `lines.json` + `story.js` (sigue `GUIA.md` y el ejemplo de su estilo; para EXPLICADOR importa `./explicador.js` y usa `captionStyle: 'karaoke'`).
 2. Voz:
    - Kokoro: `python3 voz.py kokoro`.
@@ -31,7 +31,7 @@ Carpeta por reel: `~/hoy/NN` (NN = 01…05). Estilos y voces según ESTILOS.md (
 3. `python3 render.py fotos` → mira `fotos/hoja.jpg` con Read. Corrige lo que se vea mal (textos tapados, figuras rotas, escenas vacías) y repite. Luego `python3 render.py video` → `salida/reel.mp4`; mira 3 fotogramas del MP4 con ffmpeg.
 4. Portada: `python3 render.py portada <segundo con buena imagen> "LÍNEA 1|LÍNEA *CLAVE*|LÍNEA 3" [codigo]` → `salida/portada.jpg` (2–3 líneas cortas en MAYÚSCULAS con el gancho; revísala con Read).
 
-### Casillas 4–5 (becario-reels, pizarra)
+### Casilla 5 (becario-reels, pizarra)
 1. Carga la skill `becario-reels` con la herramienta Skill y sigue su SKILL.md y referencias. `python3 /mnt/skills/plugins/becario-reels/scripts/preparar.py ~/hoy/NN`.
 2. Copia encima `~/rp/fabrica/becario/nutricion/src/` → `~/hoy/NN/src/`; si MARCA = codigo, copia además `~/rp/fabrica/becario/codigo/src/` encima. Logos a `public/imagenes/`: `~/rp/fabrica/motor/img/logo-orlando.jpg`, `logo-nc.jpg`, `logo-codigo.jpg`. Para un tema de libro, descarga la portada del libro con la herramienta Artifact (action "read", url del artefacto, path = id tras "/_blob/") a `public/imagenes/libro-<id>.png`.
 3. Plan (`src/datos/plan.json`): modelo de forma `~/rp/fabrica/becario/nutricion/plan-ejemplo.json`. `"personaje": false`, `"subtitulos": "linea"`, estilo de la rotación (ESTILOS.md) y luego avanza `proximoEstilo` en config/estado. Cierres:

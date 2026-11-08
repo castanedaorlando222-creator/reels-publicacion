@@ -29,5 +29,6 @@ Rotación de estilos de pizarra (doc `config/estado` del artefacto, campo `proxi
 ## Reglas de contenido (siempre)
 - Ganchos: lee `GANCHOS.md` (fórmulas de los primeros 3 segundos sacadas de vidIQ). Usa el campo `gancho` del tema como punto de partida.
 - Honestidad: cifras, fechas, citas y referencias REALES y verificadas con WebSearch antes de usarlas (cita con libro y capítulo cuando sea un estoico). Nada de promesas de curación ni «en X días». Si un tema no se puede tratar con honestidad, márcalo `descartado` con motivo y usa el siguiente.
+- **Duración máxima 45 s (obligatorio).** Tras generar la voz, mide la duración total (voz + cierre). Si pasa de 45 s, acorta o quita frases y vuelve a generar la voz (con Kokoro; con Iván, recorta el texto ANTES de generar para no gastar dos tomas: guion de ≤ 85 palabras sin contar el cierre). Comprueba la duración del MP4 final con ffprobe antes de subirlo.
 - Español latinoamericano, cercano. 30–45 s: 8–11 frases cortas en el motor; 9–14 en becario-reels.
 - Varía personajes (nombre, edad, sexo, ropa, pelo), escenarios y paletas entre días. Nunca copies las escenas del ejemplo: es modelo de forma y calidad.

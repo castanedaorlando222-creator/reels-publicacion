@@ -2,7 +2,7 @@
 
 Lo ejecuta una tarea programada, sin nadie mirando: no hagas preguntas, decide y sigue. Todo en español. `MARCA` = `nutricion` o `codigo` y `MODO` = `tarde` o `respaldo` (lo dice la tarea).
 
-- **MODO tarde** (tarea de la tarde, en la computadora de Orlando): produce los reels de **MAÑANA**. FECHA = mañana (hora de Managua). Casilla 1 = **ILUSTRADO** con imágenes de Google Flow (sigue `FLOW.md`); si Flow no está disponible, casilla 1 = EXPLICADOR «rayos X».
+- **MODO tarde** (tarea de la tarde, en la computadora de Orlando): produce los reels de **MAÑANA**. FECHA = mañana (hora de Managua). Casilla 1 = EXPLICADOR «rayos X» (Google Flow en pausa).
 - **MODO respaldo** (tarea de madrugada, en la nube): FECHA = hoy. Primero mira la colección `historial`: si ya hay 5 o más reels de MARCA con `fecha` = hoy (los hizo la tarea de la tarde), **termina sin hacer nada más** (sin mensaje). Si no, produce los de hoy con casilla 1 = EXPLICADOR «rayos X».
 
 ## 0. Preparación

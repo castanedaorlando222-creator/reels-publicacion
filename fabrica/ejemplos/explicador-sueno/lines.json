@@ -1,0 +1,13 @@
+[
+ {"id":"l1","text":"¿Te da sueño después de comer? No es flojera.","sub":"¿Te da sueño después de comer? No es flojera.","hl":["sueño"],"gap":0.3},
+ {"id":"l2","text":"La comida llega a tu estómago y empieza la digestión.","sub":"La comida llega a tu estómago y empieza la digestión.","hl":["estómago"],"gap":0.25},
+ {"id":"l3","text":"Si el plato trae mucho pan, arroz blanco o azúcar, la glucosa sube rápido en tu sangre.","sub":"Si el plato trae mucho pan, arroz blanco o azúcar, la glucosa sube rápido en tu sangre.","hl":["glucosa"],"red":["rápido"],"gap":0.25},
+ {"id":"l4","text":"Tu páncreas responde con insulina para bajarla.","sub":"Tu páncreas responde con insulina para bajarla.","hl":["insulina"],"gap":0.25},
+ {"id":"l5","text":"Ese sube y baja puede dejarte sin energía.","sub":"Ese sube y baja puede dejarte sin energía.","red":["energía."],"gap":0.25},
+ {"id":"l6","text":"Además, tu reloj interno baja la alerta a primera hora de la tarde.","sub":"Además, tu reloj interno baja la alerta a primera hora de la tarde.","hl":["reloj"],"gap":0.25},
+ {"id":"l7","text":"El truco: medio plato de verduras y una porción de proteína.","sub":"El truco: medio plato de verduras y una porción de proteína.","green":["verduras"],"gap":0.25},
+ {"id":"l8","text":"Y camina de dos a cinco minutos después de comer.","sub":"Y camina de 2 a 5 minutos después de comer.","green":["camina"],"gap":0.25},
+ {"id":"l9","text":"Un análisis de siete estudios vio que eso ya baja el pico de glucosa.","sub":"Un análisis de 7 estudios vio que eso ya baja el pico de glucosa.","green":["baja"],"gap":0.35},
+ {"id":"l10","text":"Guarda este reel y compártelo con alguien que lo necesite.","sub":"Guarda este reel y compártelo con alguien que lo necesite.","noSubs":true,"gap":0.2},
+ {"id":"l11","text":"Síguenos para más en Nutrición Consciente en Facebook y Orlando Castañeda Nutrición en YouTube.","sub":"","noSubs":true,"gap":0.3}
+]

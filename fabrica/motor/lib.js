@@ -279,7 +279,16 @@ export async function run(story, IMG = {}) {
     const g = ctx.createLinearGradient(0, y - h / 2, 0, y + h / 2); g.addColorStop(0, 'rgba(255,235,190,.4)'); g.addColorStop(1, 'rgba(90,60,30,.18)'); ctx.fillStyle = g; ctx.fill();
     let x = W / 2 - tot / 2; for (const p of parts) { const a = seg(t, p.t - .05, p.t + .08); ctx.globalAlpha = .35 + .65 * a; ctx.fillStyle = p.red ? '#9b1c1c' : p.green ? '#1e6b3a' : p.hl ? '#8a4b00' : '#2a1d10'; ctx.fillText(p.w, x, y + 2); x += p.wd + sp; }
     ctx.restore(); ctx.restore(); }
-  function caption(t) { const c = CH.find(c => t >= c.t0 && t < c.t1); if (!c) return; if (st.captionStyle === 'papel') return captionPapel(c, t); ctx.save(); let fs = 66; ctx.font = `800 ${fs}px Inter`; ctx.textBaseline = 'middle';
+  function captionKaraoke(c, t) { // subtítulo arriba, palabra que suena dentro de un recuadro con borde (estilo explicador)
+    ctx.save(); let fs = 58; ctx.font = `700 ${fs}px Inter`; ctx.textBaseline = 'middle'; const sp = 16;
+    let parts = c.map(w => ({ ...w, wd: ctx.measureText(w.w).width })), tot = parts.reduce((a, p) => a + p.wd, 0) + sp * (parts.length - 1);
+    if (tot > 820) { fs = Math.floor(fs * 820 / tot); ctx.font = `700 ${fs}px Inter`; parts = c.map(w => ({ ...w, wd: ctx.measureText(w.w).width })); tot = parts.reduce((a, p) => a + p.wd, 0) + sp * (parts.length - 1); }
+    let x = W / 2 - tot / 2; const y = st.captionY || 400; let cur = -1; parts.forEach((p, i) => { if (t >= p.t - .02) cur = i; });
+    parts.forEach((p, i) => { const on = i <= cur;
+      if (i === cur) { ctx.fillStyle = 'rgba(20,40,110,.75)'; rr(x - 10, y - fs * .62, p.wd + 20, fs * 1.24, 8); ctx.fill(); ctx.strokeStyle = '#ffffff'; ctx.lineWidth = 2.5; ctx.stroke(); for (const [cx, cy] of [[x - 10, y - fs * .62], [x + p.wd + 10, y - fs * .62], [x - 10, y + fs * .62], [x + p.wd + 10, y + fs * .62]]) { ctx.fillStyle = '#fff'; ctx.fillRect(cx - 4, cy - 4, 8, 8); } }
+      ctx.shadowColor = 'rgba(0,0,0,.7)'; ctx.shadowBlur = 10; ctx.fillStyle = !on ? 'rgba(255,255,255,.38)' : p.red ? '#ff6b6b' : p.green ? '#6dffa8' : p.hl ? '#ffd34f' : '#ffffff'; ctx.fillText(p.w, x, y); ctx.shadowBlur = 0; x += p.wd + sp; });
+    ctx.restore(); }
+  function caption(t) { const c = CH.find(c => t >= c.t0 && t < c.t1); if (!c) return; if (st.captionStyle === 'papel') return captionPapel(c, t); if (st.captionStyle === 'karaoke') return captionKaraoke(c, t); ctx.save(); let fs = 66; ctx.font = `800 ${fs}px Inter`; ctx.textBaseline = 'middle';
     const sp = 18; let parts = c.map(w => ({ ...w, wd: ctx.measureText(w.w).width })), tot = parts.reduce((a, p) => a + p.wd, 0) + sp * (parts.length - 1);
     if (tot > 960) { fs = Math.floor(fs * 960 / tot); ctx.font = `800 ${fs}px Inter`; parts = c.map(w => ({ ...w, wd: ctx.measureText(w.w).width })); tot = parts.reduce((a, p) => a + p.wd, 0) + sp * (parts.length - 1); }
     let x = W / 2 - tot / 2; const y = 1380;

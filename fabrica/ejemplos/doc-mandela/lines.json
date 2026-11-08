@@ -1,0 +1,10 @@
+[
+ {"id":"l1","gap":0.5,"text":"Le quitaron veintisiete años de su vida. No pudieron quitarle esto.","sub":"Le quitaron 27 años de su vida. No pudieron quitarle esto.","hl":["27","años"],"red":["esto."]},
+ {"id":"l2","gap":0.4,"text":"Isla Robben, mil novecientos sesenta y cuatro. Nelson Mandela entra en una celda de poco más de dos metros.","sub":"Isla Robben, 1964. Nelson Mandela entra en una celda de poco más de dos metros.","hl":["Nelson","Mandela"]},
+ {"id":"l3","gap":0.35,"text":"Pica piedra en una cantera de cal, bajo un sol que le daña los ojos.","sub":"Pica piedra en una cantera de cal, bajo un sol que le daña los ojos.","red":["daña","ojos."]},
+ {"id":"l4","gap":0.45,"text":"Solo puede recibir una carta cada seis meses.","sub":"Solo puede recibir una carta cada seis meses.","red":["una","carta"]},
+ {"id":"l5","gap":0.4,"text":"Pero hay algo que nadie puede encerrar: cómo elige responder.","sub":"Pero hay algo que nadie puede encerrar: cómo elige responder.","hl":["elige","responder."]},
+ {"id":"l6","gap":0.45,"text":"Ese es el centro del estoicismo. No controlas lo que te pasa. Controlas lo que haces con ello.","sub":"Ese es el centro del estoicismo. No controlas lo que te pasa. Controlas lo que haces con ello.","hl":["Controlas","haces"]},
+ {"id":"l7","gap":0.5,"text":"En mil novecientos noventa sale libre, sin odio. Cuatro años después es presidente.","sub":"En 1990 sale libre, sin odio. Cuatro años después es presidente.","hl":["sin","odio."],"green":["presidente."]},
+ {"id":"l8","gap":0.3,"noSubs":true,"text":"Síguenos en El Código de los Mejores.","sub":"Síguenos en El Código de los Mejores."}
+]

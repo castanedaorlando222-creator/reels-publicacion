@@ -1,0 +1,249 @@
+{
+  "titulo": "Cáscara de limón",
+  "estilo": {
+    "base": "menta",
+    "colores": {
+      "acento": "#1E8449",
+      "acentoTexto": "#FFFFFF"
+    }
+  },
+  "subtitulos": "linea",
+  "personaje": false,
+  "frases": [
+    {
+      "texto": "¡No tires la *cáscara del limón!*",
+      "emocion": "[excited]",
+      "sinSubtitulos": true,
+      "escena": {
+        "tipo": "titular",
+        "etiqueta": "¡ESPERA!",
+        "texto": "No tires / la *cáscara* / del limón",
+        "icono": "citrus",
+        "en": [
+          "cascara"
+        ]
+      }
+    },
+    {
+      "texto": "Tiene *más vitamina C* que el propio *jugo.*",
+      "emocion": "[curious]",
+      "escena": {
+        "tipo": "comparacion",
+        "izquierda": {
+          "titulo": "Jugo",
+          "texto": "lo que todos usan",
+          "icono": "glass-water"
+        },
+        "derecha": {
+          "titulo": "Cáscara",
+          "texto": "lo que todos tiran",
+          "icono": "citrus"
+        },
+        "ganador": "derecha",
+        "en": [
+          "vitamina",
+          "propio",
+          "jugo"
+        ]
+      }
+    },
+    {
+      "texto": "En 100 gramos de cáscara hay unos *129 miligramos* de vitamina C.",
+      "emocion": "[impressed]",
+      "escena": {
+        "tipo": "contador",
+        "desde": 0,
+        "valor": 129,
+        "sufijo": " mg",
+        "etiqueta": "vitamina C en 100 g",
+        "icono": "zap",
+        "en": [
+          "100",
+          "129"
+        ]
+      }
+    },
+    {
+      "texto": "El jugo apenas llega a *39.* Más del *triple.*",
+      "emocion": "[confident]",
+      "escena": {
+        "tipo": "barras",
+        "titulo": "Vitamina C (mg/100 g)",
+        "unidad": "mg",
+        "barras": [
+          {
+            "etiqueta": "Jugo",
+            "valor": 39
+          },
+          {
+            "etiqueta": "Cáscara",
+            "valor": 129
+          }
+        ],
+        "destacar": 1,
+        "en": [
+          "jugo",
+          "triple"
+        ]
+      }
+    },
+    {
+      "texto": "Además, tiene *fibra* que ayuda a tu *digestión.*",
+      "emocion": "[confident]",
+      "entrada": "semitono",
+      "escena": {
+        "tipo": "ficha",
+        "titulo": "Cáscara",
+        "icono": "leaf",
+        "etiqueta": "por 100 g",
+        "filas": [
+          [
+            "fibra",
+            "10,6 g",
+            true
+          ],
+          [
+            "vitamina C",
+            "129 mg"
+          ],
+          [
+            "ayuda a",
+            "digestión"
+          ]
+        ],
+        "en": [
+          "fibra",
+          "ayuda",
+          "digestion"
+        ]
+      }
+    },
+    {
+      "texto": "Y aporta *limoneno* y *flavonoides,* antioxidantes naturales.",
+      "emocion": "[whispers]",
+      "escena": {
+        "tipo": "lista",
+        "titulo": "Lo que esconde",
+        "items": [
+          {
+            "texto": "Limoneno",
+            "icono": "droplet"
+          },
+          {
+            "texto": "Flavonoides",
+            "icono": "sparkles"
+          },
+          {
+            "texto": "Antioxidantes",
+            "icono": "shield"
+          }
+        ],
+        "en": [
+          "limoneno",
+          "flavonoides",
+          "antioxidantes"
+        ]
+      }
+    },
+    {
+      "texto": "Rállala sobre tus *ensaladas,* hiérvela en *té* o ponla en tu *agua.*",
+      "emocion": "[confident]",
+      "escena": {
+        "tipo": "pasos",
+        "pasos": [
+          {
+            "texto": "Rállala en ensaladas",
+            "icono": "salad"
+          },
+          {
+            "texto": "Hiérvela en un té",
+            "icono": "coffee"
+          },
+          {
+            "texto": "Ponla en tu agua",
+            "icono": "glass-water"
+          }
+        ],
+        "en": [
+          "Rallala",
+          "te",
+          "agua"
+        ]
+      }
+    },
+    {
+      "texto": "Pero ojo: lávala muy bien, suele traer *cera* y *pesticidas.*",
+      "emocion": "[skeptical]",
+      "escena": {
+        "tipo": "tachado",
+        "antes": "Directo al plato",
+        "despues": "Bien lavada",
+        "icono": "triangle-alert",
+        "en": [
+          "lavala",
+          "pesticidas"
+        ]
+      }
+    },
+    {
+      "texto": "Si puedes, elige limones *orgánicos.*",
+      "emocion": "[confident]",
+      "sinSubtitulos": true,
+      "escena": {
+        "tipo": "titular",
+        "texto": "Si puedes, / elige limones / *orgánicos*",
+        "icono": "sprout",
+        "en": [
+          "limones"
+        ]
+      }
+    },
+    {
+      "texto": "*Guarda este reel* y empieza a aprovechar tu *limón.*",
+      "emocion": "[excited]",
+      "entrada": "semitono",
+      "sinSubtitulos": true,
+      "escena": {
+        "tipo": "cta",
+        "verbo": "Guarda",
+        "palabra": "ESTE REEL",
+        "texto": "y aprovecha / tu limón",
+        "iconos": [
+          "bookmark",
+          "citrus",
+          "leaf",
+          "heart",
+          "check"
+        ],
+        "en": [
+          "Guarda",
+          "aprovechar",
+          "limon"
+        ]
+      }
+    },
+    {
+      "texto": "Síguenos para más en *Nutrición Consciente* en Facebook y *Orlando Castañeda Nutrición* en YouTube.",
+      "emocion": "[confident]",
+      "sinSubtitulos": true,
+      "escena": {
+        "tipo": "propia",
+        "nombre": "Siguenos",
+        "en": [
+          "Siguenos",
+          "Nutricion",
+          "Orlando"
+        ]
+      }
+    }
+  ],
+  "portada": {
+    "lineas": [
+      "NO TIRES",
+      "LA *CÁSCARA*",
+      "DE LIMÓN"
+    ],
+    "icono": "citrus",
+    "marca": true
+  }
+}

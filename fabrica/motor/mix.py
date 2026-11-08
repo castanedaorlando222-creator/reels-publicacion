@@ -41,7 +41,8 @@ cuts = [e['t'] for e in EV if e['type'] == 'cut']; sting = [e['t'] for e in EV i
 sting = sting[0] if sting else DUR
 chords = [[50, 57, 62, 65], [46, 53, 58, 62], [48, 55, 60, 63], [45, 52, 57, 60], [46, 53, 58, 62], [43, 50, 55, 58], [50, 57, 62, 65]]
 bounds = [0] + cuts + [DUR]
-for i in range(len(bounds) - 1):
+MUSICA = os.environ.get('MUSICA') == '1'   # Orlando: sin música de fondo (solo voz + efectos). MUSICA=1 la vuelve a poner.
+for i in (range(len(bounds) - 1) if MUSICA else []):
     a, b = bounds[i], bounds[i + 1]; ch = chords[i % len(chords)] if a < sting - .1 else [55, 59, 62, 67]
     for m in ch: add(music, pad(m, b - a + 1.2), a, 1., pan=(m % 3 - 1) * .3)
     t, k = a + .2, 0
@@ -67,7 +68,8 @@ v_on = np.abs(voice).sum(1) > 1e-4
 k = int(.3 * SR); duck = np.convolve(v_on.astype(float), np.ones(k) / k, 'same')
 music *= (1 - .4 * np.clip(duck, 0, 1))[:, None]
 if v_on.any(): voice *= .25 / rms(voice[v_on])
-music *= (.25 / 3.2) / rms(music); fx *= (.25 / 4.0) / rms(fx)
+if MUSICA: music *= (.25 / 3.2) / rms(music)
+fx *= (.25 / 4.0) / rms(fx)
 out = voice + music + fx
 os.makedirs('salida', exist_ok=True)
 sf.write('salida/mix.wav', np.stack([limit(out[:, 0]), limit(out[:, 1])], 1).astype(np.float32), SR)

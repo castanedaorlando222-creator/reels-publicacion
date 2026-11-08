@@ -1,10 +1,14 @@
 # Los 5 reels de cada marca (estilos aprobados por Orlando)
 
+**Audio: SIN música de fondo** (Orlando no la quiere). Solo voz + efectos de sonido. El motor ya viene así (`mix.py`); no añadas pistas de música en ningún estilo.
+
+El estilo LIGHTBOX (`ejemplos/lightbox-seneca`) queda en reserva: no se usa salvo que Orlando lo pida.
+
 Cada día, cada marca publica 5 reels de 30–45 s, uno por casilla:
 
 | Casilla | Estilo | Motor | Voz | Ejemplo aprobado |
 |---|---|---|---|---|
-| 1 | **LIGHTBOX**: caja de papel recortado iluminada por detrás, capas de cielo → montañas → edificios → marco; subtítulos en tiras de papel (`captionStyle: 'papel'`) | `motor/` + `lightbox.js` | Kokoro | `ejemplos/lightbox-seneca` |
+| 1 | **EXPLICADOR «rayos X»**: UN protagonista enorme por plano (cuerpo, órgano, vaso sanguíneo, gráfica, reloj, plato…) en línea de neón sobre azul profundo con partículas; un plano nuevo cada 3–4 s con una sola idea animada; etiquetas en píldora; subtítulos ARRIBA con recuadro en la palabra que suena (`captionStyle: 'karaoke'`). Estoicismo: misma receta en negro y dorado (mente/cerebro, círculos de control, relojes, gráficas, siluetas de neón) | `motor/` + `explicador.js` | Kokoro | `ejemplos/explicador-sueno` |
 | 2 | **HISTORIA DOCUMENTAL** (estilo «Mandela»): un caso o personaje REAL, fechas y lugares en etiquetas tipo archivo, tono de documental, paleta oscura y dorada, grano | `motor/` | Iván (ElevenLabs) | `ejemplos/doc-mandela` |
 | 3 | **FARO**: una persona ficticia con nombre y edad, de noche (azul profundo), reloj arriba a la izquierda, etiquetas tipo terminal, tinte rojo en el riesgo y verde en la solución | `motor/` | Iván (ElevenLabs) | `ejemplos/faro-ozempic` |
 | 4 | **PIZARRA A**: skill becario-reels, estilo de la rotación | becario-reels | Kokoro | `becario/<marca>/plan-ejemplo.json` (nutrición) |
@@ -15,6 +19,7 @@ Rotación de estilos de pizarra (doc `config/estado` del artefacto, campo `proxi
 ## Qué tema va a cada casilla
 - **Nutrición**: casillas 1, 2, 3 y 4 = temas de salud (colección `temas`); casilla 5 = tema de libro (colección `temasLibro`, con la escena final «Libro»). La casilla 2 (documental) necesita una historia real de la ciencia de la nutrición o de un caso documentado relacionado con el tema (p. ej. James Lind y el escorbuto para la vitamina C; Eijkman y el beriberi para la tiamina; Goldberger y la pelagra para la niacina); elige para ella el tema pendiente que mejor se preste.
 - **Estoicismo**: las 5 casillas de `temasEstoicismo`. Temas con `formato: "historia"` → casillas 2 (personaje histórico real) o 3 (persona actual ficticia que aplica la idea); temas `"pintura"` → casillas 1, 4 y 5.
+- El protagonista de cada plano ocupa al menos el 60 % del ancho. Nada de figuras pequeñas en medio de fondo vacío: si un plano se ve vacío en la hoja de fotos, agranda o cambia la idea.
 
 ## Marca en cada estilo
 - Nutrición (motor): por defecto (logos Orlando arriba-derecha y NC abajo-centro, cierre verde «Guarda este reel / Síguenos…»). Frases finales: «Guarda este reel y compártelo con alguien que lo necesite.» y «Síguenos para más en Nutrición Consciente en Facebook y Orlando Castañeda Nutrición en YouTube.» (`noSubs: true`, `cierreFrom` = la de «Guarda»).

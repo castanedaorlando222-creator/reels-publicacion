@@ -21,7 +21,7 @@ Lo ejecuta una tarea programada, sin nadie mirando: no hagas preguntas, decide y
 Carpeta por reel: `~/hoy/NN` (NN = 01…05). Estilos y voces según ESTILOS.md (casillas 2 y 3 con la voz de Iván; 1, 4 y 5 con Kokoro).
 
 ### Casillas 1–3 (motor propio)
-1. `mkdir -p ~/hoy/NN && cp -r ~/rp/fabrica/motor/* ~/hoy/NN/` y escribe `lines.json` + `story.js` (sigue `GUIA.md` y el ejemplo de su estilo; para LIGHTBOX importa `./lightbox.js`).
+1. `mkdir -p ~/hoy/NN && cp -r ~/rp/fabrica/motor/* ~/hoy/NN/` y escribe `lines.json` + `story.js` (sigue `GUIA.md` y el ejemplo de su estilo; para EXPLICADOR importa `./explicador.js` y usa `captionStyle: 'karaoke'`).
 2. Voz:
    - Kokoro: `python3 voz.py kokoro`.
    - Iván: `python3 voz.py texto` → genera con `mcp__ElevenLabs__creative_generate_speech`: `voice_id` = config/estado.vozElevenLabs (`oqO5cdAzjE5Ik5xWIZRL`), `model_id` "eleven_v4", **`generations_count` 1** (una sola toma; NUNCA repitas la llamada para reintentar, cobra otra vez). Consulta `mcp__ElevenLabs__creative_get_flow_run_status` hasta `all_completed`, descarga el MP3 de `content_url` con curl a `voz.mp3` y `python3 voz.py partir voz.mp3`. Si ElevenLabs falla, no tiene créditos o `partir` da ERROR → `python3 voz.py kokoro` (y dilo en el informe).

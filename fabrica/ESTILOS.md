@@ -9,6 +9,7 @@ Cada día, cada marca publica 5 reels de 30–45 s, uno por casilla:
 | Casilla | Estilo | Motor | Voz | Ejemplo aprobado |
 |---|---|---|---|---|
 | 1 | **EXPLICADOR «rayos X»**: UN protagonista enorme por plano (cuerpo, órgano, vaso sanguíneo, gráfica, reloj, plato…) en línea de neón sobre azul profundo con partículas; un plano nuevo cada 3–4 s con una sola idea animada; etiquetas en píldora; subtítulos ARRIBA con recuadro en la palabra que suena (`captionStyle: 'karaoke'`). Estoicismo: misma receta en negro y dorado (mente/cerebro, círculos de control, relojes, gráficas, siluetas de neón) | `motor/` + `explicador.js` | Kokoro | `ejemplos/explicador-sueno` |
+| 1 (tarde) | **ILUSTRADO**: ilustraciones de Google Flow (personajes con cara, órganos, objetos; ver `FLOW.md`) animadas con código; mismas reglas de plano, etiquetas y subtítulos que EXPLICADOR. Si no hay Flow, se usa EXPLICADOR | `motor/` + `ilustrado.js` + `explicador.js` | Kokoro | — |
 | 2 | **HISTORIA DOCUMENTAL** (estilo «Mandela»): un caso o personaje REAL, fechas y lugares en etiquetas tipo archivo, tono de documental, paleta oscura y dorada, grano | `motor/` | Iván (ElevenLabs) | `ejemplos/doc-mandela` |
 | 3 | **FARO**: una persona ficticia con nombre y edad, de noche (azul profundo), reloj arriba a la izquierda, etiquetas tipo terminal, tinte rojo en el riesgo y verde en la solución | `motor/` | Iván (ElevenLabs) | `ejemplos/faro-ozempic` |
 | 4 | **PIZARRA A**: skill becario-reels, estilo de la rotación | becario-reels | Kokoro | `becario/<marca>/plan-ejemplo.json` (nutrición) |

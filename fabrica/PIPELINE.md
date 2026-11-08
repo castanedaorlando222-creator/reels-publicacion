@@ -1,6 +1,9 @@
 # Producción diaria: 5 reels por marca, hechos, con portada y programados en Metricool
 
-Lo ejecuta una tarea programada, sin nadie mirando: no hagas preguntas, decide y sigue. Todo en español. `MARCA` = `nutricion` o `codigo` (lo dice la tarea).
+Lo ejecuta una tarea programada, sin nadie mirando: no hagas preguntas, decide y sigue. Todo en español. `MARCA` = `nutricion` o `codigo` y `MODO` = `tarde` o `respaldo` (lo dice la tarea).
+
+- **MODO tarde** (tarea de la tarde, en la computadora de Orlando): produce los reels de **MAÑANA**. FECHA = mañana (hora de Managua). Casilla 1 = **ILUSTRADO** con imágenes de Google Flow (sigue `FLOW.md`); si Flow no está disponible, casilla 1 = EXPLICADOR «rayos X».
+- **MODO respaldo** (tarea de madrugada, en la nube): FECHA = hoy. Primero mira la colección `historial`: si ya hay 5 o más reels de MARCA con `fecha` = hoy (los hizo la tarea de la tarde), **termina sin hacer nada más** (sin mensaje). Si no, produce los de hoy con casilla 1 = EXPLICADOR «rayos X».
 
 ## 0. Preparación
 1. Repositorio: `git clone https://github.com/castanedaorlando222-creator/reels-publicacion ~/rp` (si el clon o el `git push` fallan por permisos, llama a `mcp__claude-code-remote__add_repo` con owner `castanedaorlando222-creator`, repo `reels-publicacion`, access `push`, y repite). `git config user.name "Fabrica de reels"; git config user.email "castanedaorlando222@gmail.com"`. Trabaja siempre con `git pull --rebase` antes de cada push (la otra marca puede estar escribiendo a la vez).
@@ -14,11 +17,11 @@ Lo ejecuta una tarea programada, sin nadie mirando: no hagas preguntas, decide y
 ## 1. Elegir los 5 temas SIN REPETIR
 - Solo temas con `estado: "pendiente"`, por `orden`. Además compáralos con TODOS los títulos de `historial` de la misma marca y con los temas `usado`: si un tema pendiente trata en esencia lo mismo que uno ya publicado (mismo alimento + mismo efecto, misma cita o misma anécdota), márcalo `descartado` con `motivo: "duplicado de <id>"` y toma el siguiente.
 - Reparte según ESTILOS.md (qué tema va a cada casilla).
-- **Reserva antes de producir**: en cuanto elijas, marca cada tema con `ArtifactData update` (con `if_version`) `{"estado": "usado", "fecha": "<AAAA-MM-DD>", "casilla": N}`. Así una segunda ejecución nunca repite. Si al final un reel no se pudo hacer, devuelve su tema a `pendiente`.
+- **Reserva antes de producir**: en cuanto elijas, marca cada tema con `ArtifactData update` (con `if_version`) `{"estado": "usado", "fecha": "<FECHA>", "casilla": N}`. Así una segunda ejecución nunca repite. Si al final un reel no se pudo hacer, devuelve su tema a `pendiente`.
 - **Reponer temario**: si quedan menos de 15 pendientes en la colección de la marca (o menos de 6 en `temasLibro`), al terminar las publicaciones investiga con vidIQ (herramientas `vidiq_outliers`, `vidiq_instagram_tiktok_outlier_search`, `vidiq_youtube_search`; pocas llamadas) qué temas y ganchos funcionan ahora en el nicho en español, y añade 25 temas nuevos con la misma forma de documento (ids siguientes: `t71…` / `e099…` / `tl58…`; `orden` a continuación del máximo; `estado: "pendiente"`; `base` = de dónde sale), sin duplicar nada existente (ni pendientes ni usados ni historial).
 
 ## 2. Producir cada reel
-Carpeta por reel: `~/hoy/NN` (NN = 01…05). Estilos y voces según ESTILOS.md (casillas 2 y 3 con la voz de Iván; 1, 4 y 5 con Kokoro).
+Carpeta por reel: `~/hoy/NN` (NN = 01…05). Estilos y voces según ESTILOS.md (casillas 2 y 3 con la voz de Iván; 1, 4 y 5 con Kokoro). En modo tarde, genera primero las ilustraciones de Flow de la casilla 1 (FLOW.md) y luego produce todo.
 
 ### Casillas 1–3 (motor propio)
 1. `mkdir -p ~/hoy/NN && cp -r ~/rp/fabrica/motor/* ~/hoy/NN/` y escribe `lines.json` + `story.js` (sigue `GUIA.md` y el ejemplo de su estilo; para EXPLICADOR importa `./explicador.js` y usa `captionStyle: 'karaoke'`).
@@ -39,14 +42,14 @@ Carpeta por reel: `~/hoy/NN` (NN = 01…05). Estilos y voces según ESTILOS.md (
 5. `node render.mjs resumen` → `node render.mjs fotos` (mira salida/hoja.png) → `node render.mjs video` → `node render.mjs portada` (revisa). Si un archivo .tsx copiado da error de compilación, corrígelo tú. Convierte la portada a JPG: `ffmpeg -i salida/portada.png -q:v 3 salida/portada.jpg`.
 
 ## 3. Subir y programar
-1. Copia cada reel a `~/rp/videos/<AAAA-MM-DD>/<marca>-NN-<slug>.mp4` y su portada a `…/<marca>-NN-<slug>.jpg`. `git add`, `git commit -m "Reels <marca> <fecha>"`, `git pull --rebase`, `git push`. URL pública: `https://raw.githubusercontent.com/castanedaorlando222-creator/reels-publicacion/main/videos/<AAAA-MM-DD>/<archivo>`. Comprueba con `curl -sI` que da 200 antes de programar.
+1. Copia cada reel a `~/rp/videos/<FECHA>/<marca>-NN-<slug>.mp4` y su portada a `…/<marca>-NN-<slug>.jpg`. `git add`, `git commit -m "Reels <marca> <fecha>"`, `git pull --rebase`, `git push`. URL pública: `https://raw.githubusercontent.com/castanedaorlando222-creator/reels-publicacion/main/videos/<FECHA>/<archivo>`. Comprueba con `curl -sI` que da 200 antes de programar.
 2. Limpieza: borra del repo las carpetas de `videos/` de hace más de 7 días (Metricool ya copió los vídeos a su almacenamiento) y haz push.
-3. Programa cada reel con `mcp__Metricool_Social_Media_Management__createScheduledPost` (`autoPublish: true`, `draft: false`), `publicationDate.timezone` = "America/Managua". Horas (hoy si aún faltan ≥ 40 min; si no, la siguiente hora libre de hoy o, si no queda, mañana a la misma hora; nunca dos reels de la misma marca a menos de 2 h):
+3. Programa cada reel con `mcp__Metricool_Social_Media_Management__createScheduledPost` (`autoPublish: true`, `draft: false`), `publicationDate.timezone` = "America/Managua", día = FECHA. Horas (en modo respaldo: si alguna ya pasó o faltan menos de 40 min, usa la siguiente hora libre de hoy; nunca dos reels de la misma marca a menos de 2 h):
    - Nutrición (blogId `7908754`): 08:30, 11:30, 14:30, 17:30, 20:30. `providers`: facebook, instagram, threads, tiktok, youtube. `facebookData: {"type":"REEL","title":"<título>"}`, `instagramData: {"type":"REEL","showReelOnFeed":true,"isAiGenerated":true}`, `threadsData: {}`, `tiktokData: {"title":"<título ≤ 90>","privacyOption":"PUBLIC_TO_EVERYONE","isAigc":true}`, `youtubeData: {"title":"<título ≤ 95> #shorts","type":"short","privacy":"public","madeForKids":false,"category":"HOWTO_STYLE","tags":[…]}`.
    - Estoicismo (blogId `7949546`): 07:00, 10:00, 13:00, 16:00, 19:00. `providers`: youtube, facebook. `youtubeData: {"title":"<título> #shorts","type":"short","privacy":"public","madeForKids":false,"category":"EDUCATION","tags":[…]}`, `facebookData: {"type":"REEL","title":"<título>"}`.
    - `media`: [URL del MP4]; `videoThumbnailUrl`: URL del JPG. Si la respuesta da `VIDEO_THUMBNAIL_NOT_APPLICABLE`, repite sin `videoThumbnailUrl` (ni `videoCoverMilliseconds`).
    - `text`: 2–3 frases que enganchan + llamada a guardar/seguir + 4–6 hashtags del tema (nutrición: #nutricion #salud #nutricionconsciente …; estoicismo: #estoicismo #marcoaurelio #sabiduria #disciplina …). Libro: añade el enlace de Amazon si `libros.<id>.enlace` existe, si no «📖 Enlace al libro en los comentarios» y pon el enlace o esa frase en `firstCommentText`.
-4. Registra cada reel publicado en la colección `historial` (doc id `<marca>-<fecha>-NN`): `{marca, fecha, hora, tema, temaId, titulo, estilo, voz, video, plannerUrl}`.
+4. Registra cada reel publicado en la colección `historial` (doc id `<marca>-<FECHA>-NN`): `{marca, fecha: FECHA, hora, tema, temaId, titulo, estilo, voz, video, plannerUrl}`.
 
 ## 4. Informe final
 Envía con `SendUserMessage` un resumen corto: los 5 reels (tema, estilo, voz, hora programada), lo que falló y qué hiciste, temas pendientes que quedan y si se repuso el temario. Si algo falla en un reel, sigue con los demás. No envíes los archivos de vídeo (ya están en Metricool).

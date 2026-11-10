@@ -1,10 +1,10 @@
-# Los 5 reels de cada marca (estilos aprobados por Orlando)
+# Los 10 reels de cada marca (estilos aprobados por Orlando)
 
 **Audio: SIN música de fondo** (Orlando no la quiere). Solo voz + efectos de sonido. El motor ya viene así (`mix.py`); no añadas pistas de música en ningún estilo.
 
 El estilo LIGHTBOX (`ejemplos/lightbox-seneca`) queda en reserva: no se usa salvo que Orlando lo pida.
 
-Cada día, cada marca publica 5 reels de 30–45 s, uno por casilla, en este orden (Orlando): rayos X → Mandela → faro → faro → pizarra. Google Flow está en pausa (FLOW.md queda para más adelante).
+Cada día, cada marca publica **10 reels**: el bloque de 5 de la tabla (rayos X → Mandela → faro → faro → pizarra) **dos veces** (casillas 01–05 y 06–10). **Voz de Iván solo en 2 de cada 10: las casillas 02 y 07 (los dos Mandela); las otras 8 con Kokoro** (en la tabla, lee «casilla 3» como Kokoro). Nutrición: casillas 05 y 10 = temas de libro (dos libros distintos); el resto, temas de salud. Los 10 temas del día deben ser distintos entre sí y variados (no dos del mismo alimento o idea). Google Flow está en pausa (FLOW.md queda para más adelante).
 
 | Casilla | Estilo | Motor | Voz | Ejemplo aprobado |
 |---|---|---|---|---|

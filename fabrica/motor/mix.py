@@ -48,13 +48,27 @@ for i in (range(len(bounds) - 1) if MUSICA else []):
     t, k = a + .2, 0
     while t < b - .3: add(music, pluck(ch[[0, 2, 3, 2][k % 4]] + 24), t, .35, pan=.2 * ((k % 2) * 2 - 1)); t += .75; k += 1
 for k in range(int(sting / .75)):  # reloj de la noche
-    tk = bpf(noise(.02), 2500, 6000) * np.exp(-t_(.02) / .004) * (.25 if k % 2 else .18); add(fx, tk, k * .75, .5, .4)
+    tk = bpf(noise(.02), 2500, 6000) * np.exp(-t_(.02) / .004) * (.25 if k % 2 else .18); add(fx, tk, k * .75, .22, .4)
 for e in EV:
     if e['type'] == 'tag':
         add(fx, pop(), e['t'], .25, -.2)
         if e.get('col') == 'r': add(fx, thump(.6, 55), e['t'], .5); add(fx, thump(.4, 50), e['t'] + .28, .35)
     elif e['type'] == 'cut': add(fx, whoosh(), e['t'] - .15, .35)
 add(fx, thump(1., 45), sting, .7)
+def rise(d=.6):
+    t = t_(d); return np.sin(2 * np.pi * np.cumsum(300 + 900 * (t / d) ** 2) / SR) * np.sin(np.pi * t / d) ** 2 * .35
+def fall(d=.7):
+    t = t_(d); return np.sin(2 * np.pi * np.cumsum(520 * np.exp(-t / .25) + 70) / SR) * np.exp(-t / .3) * .6
+def ding():
+    d = .7; t = t_(d); return (np.sin(2 * np.pi * 1318 * t) + .5 * np.sin(2 * np.pi * 1976 * t)) * np.exp(-t / .18) * .35
+for e in EV:
+    k = e['type']
+    if k == 'pop': add(fx, pop(), e['t'], .3, .2)
+    elif k == 'thump': add(fx, thump(.6, 55), e['t'], .75)
+    elif k == 'rise': add(fx, rise(), e['t'], .5)
+    elif k == 'fall': add(fx, fall(), e['t'], .6)
+    elif k == 'ding': add(fx, ding(), e['t'], .5, -.2)
+    elif k == 'whoosh': add(fx, whoosh(.5), e['t'], .45)
 for e in EV:
     if e['type'] != 'voice': continue
     p = f"voices/{e['id']}.wav"

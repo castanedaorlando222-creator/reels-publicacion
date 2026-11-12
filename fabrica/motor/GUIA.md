@@ -52,8 +52,21 @@ export default function story(L, S) {
 - LIGHTBOX: `import { makeLightbox } from './lightbox.js'` y mira `ejemplos/lightbox-seneca/story.js` (hojas con `LB.sheet`, pila con `LB.stack`, `LB.windowLight`, `LB.burn`, `LB.seal`).
 - Etiquetas: `[instante, x, y, texto, color, tamaño, instanteFin]` (el último es opcional y la hace desaparecer).
 
+## MOTOR v2 — nivel mínimo de calidad (aprendido de la prueba con Fable que Orlando aprobó)
+Modelo a imitar: `ejemplos/explicador-fable/story.js` (31 KB; léelo entero antes del primer reel). Aplica en TODOS los estilos del motor (rayos X, faro, documental):
+- **Gancho en el fotograma 0**: protagonista enorme + pregunta o frase en grande (`V.slam`) y un sello/golpe (`V.stamp`) antes de los 2 s.
+- **Ritmo**: plano nuevo cada 1.5–3 s (nunca más de 3.5 s en el mismo encuadre). Cada plano = UNA idea animada que muestra lo que dice la voz en ese momento (usa `wt('lN','palabra')` para sincronizar).
+- **Protagonista al 65–100 % del ancho**; nada de figuras delgadas o planos vacíos/casi vacíos. Si en la hoja de fotos un plano se ve vacío, rehazlo.
+- **Transiciones con intención**: zoom de un objeto al siguiente (cerebro → neurona), transformación (plato de harinas → plato equilibrado), contadores, gráficas que se dibujan, interruptores ON/OFF. Devuelve `noFade: true` (corte con zoom, sin fundido a negro).
+- **Acabado**: `V.bloom()` al final de cada plano (brillo de neón real), `V.vign()`, `V.shake()` en los golpes, `V.ringWave()`/`V.spark()` en los momentos clave.
+- **Etiquetas grandes y llenas** (`V.tag`, 44–76 px), no píldoras diminutas.
+- **Subtítulos**: `captionStyle: 'karaoke'` (v2: 78 px, panel oscuro, palabra activa en recuadro lleno que salta) para rayos X; en faro y documental su estilo de siempre. Los tiempos de cada palabra salen de la voz real (`voices/words.json`).
+- **Efectos de sonido atados a acciones**: devuelve `fx: [[segundo, 'thump'|'pop'|'rise'|'fall'|'ding'|'whoosh'], …]` (golpes en los slams, rise cuando algo sube, fall cuando se apaga, ding en las soluciones). Sin música.
+- **Guion**: 7–9 frases cortas, una idea por frase, y un **remate memorable** justo antes del cierre (p. ej. «No te falta café. Te sobra pico.»). Datos con estudio y año en una etiqueta pequeña.
+- Uso: `import { makeV2 } from './v2.js'; const V = makeV2(L);` (funciones: bloom, vign, line, tag, slam, stamp, hexa, ringWave, spark, shake, panel, curve, axisText, mixc, on, C).
+
 ## Producción
-1. `python3 voz.py texto` → texto para ElevenLabs (una sola toma). Con el MP3: `python3 voz.py partir voz.mp3`. Si ElevenLabs falla o no hay créditos, o `partir` da ERROR: `python3 voz.py kokoro`.
+1. `python3 voz.py texto` → texto para ElevenLabs (una sola toma). Con el MP3: `python3 voz.py partir voz.mp3`. Después de `partir`, ejecuta `python3 align.py` (tiempos de cada palabra; si una línea dice «sin tiempos», no pasa nada). Si ElevenLabs falla o no hay créditos, o `partir` da ERROR: `python3 voz.py kokoro` (ya alinea solo). La pronunciación («ril», «Yútub», «Féisbuk») la corrige `pron.py` sola.
 2. `python3 render.py fotos` → mira `fotos/hoja.jpg` (12 fotos). Revisa: nada tapado por subtítulos o logos, etiquetas legibles, cada escena muestra lo que dice la voz, personaje bien dibujado. Corrige y repite.
 3. `python3 render.py video` → `salida/reel.mp4`. Mira 3–4 fotogramas del MP4 final con ffmpeg antes de entregarlo.
 4. `python3 render.py portada <segundo> "LÍNEA|LÍNEA *CLAVE*|LÍNEA" [codigo]` → `salida/portada.jpg`.

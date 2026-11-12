@@ -1,0 +1,12 @@
+[
+ {"id":"l1","text":"¿Sueño después de comer? No es flojera.","sub":"¿Sueño después de comer? No es flojera.","hl":["¿Sueño"],"red":["flojera."],"gap":0.2,"speed":1.08},
+ {"id":"l2","text":"En tu cerebro, unas neuronas te mantienen despierto: las de orexina.","sub":"En tu cerebro, unas neuronas te mantienen despierto: las de orexina.","hl":["despierto:","orexina."],"gap":0.2,"speed":1.08},
+ {"id":"l3","text":"En el laboratorio, cuando la glucosa sube, se apagan.","sub":"En el laboratorio, cuando la glucosa sube, se apagan.","hl":["glucosa"],"red":["apagan."],"gap":0.2,"speed":1.08},
+ {"id":"l4","text":"Y a primera hora de la tarde, tu reloj interno baja la alerta.","sub":"Y a primera hora de la tarde, tu reloj interno baja la alerta.","hl":["reloj"],"red":["baja"],"gap":0.2,"speed":1.08},
+ {"id":"l5","text":"Un plato cargado de harinas: doble golpe.","sub":"Un plato cargado de harinas: doble golpe.","hl":["harinas:"],"red":["doble","golpe."],"gap":0.2,"speed":1.08},
+ {"id":"l6","text":"Cambia la mitad de las harinas por proteína y verduras.","sub":"Cambia la mitad de las harinas por proteína y verduras.","green":["proteína","verduras."],"gap":0.2,"speed":1.08},
+ {"id":"l7","text":"Y camina unos minutos al terminar: baja el pico de glucosa.","sub":"Y camina unos minutos al terminar: baja el pico de glucosa.","green":["camina","baja"],"gap":0.25,"speed":1.08},
+ {"id":"l8","text":"No te falta café. Te sobra pico.","sub":"No te falta café. Te sobra pico.","hl":["café."],"red":["pico."],"gap":0.35,"speed":1.0},
+ {"id":"l9","text":"Guarda este reel y compártelo con alguien que lo necesite.","sub":"Guarda este reel y compártelo con alguien que lo necesite.","noSubs":true,"gap":0.15,"speed":1.1},
+ {"id":"l10","text":"Síguenos para más en Nutrición Consciente en Facebook y Orlando Castañeda Nutrición en YouTube.","sub":"","noSubs":true,"gap":0.0,"speed":1.1}
+]

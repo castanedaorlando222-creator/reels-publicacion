@@ -7,7 +7,7 @@ Se ejecuta dentro de la carpeta del reel (donde está lines.json).
 """
 import os, sys, json, subprocess, re, urllib.request
 import numpy as np, soundfile as sf
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__))); from pron import pron
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__))); from pron import pron, decir
 LINES = json.load(open('lines.json'))
 os.makedirs('voices', exist_ok=True)
 SR = 24000
@@ -27,9 +27,10 @@ def kokoro():
     k = Kokoro(os.path.join(cache, 'kokoro-v1.0.onnx'), os.path.join(cache, 'voices-v1.0.bin'))
     dur = {}
     for L in LINES:
-        a, sr = k.create(pron(L['text']), voice=L.get('voice', 'em_alex'), speed=L.get('speed', 1.0), lang='es')
+        a, sr = decir(k, L['text'], voice=L.get('voice', 'em_alex'), speed=L.get('speed', 1.0))
         dur[L['id']] = save(L['id'], a, sr); print(L['id'], dur[L['id']])
     json.dump(dur, open('voices/dur.json', 'w'), indent=1)
+    import align; align.alinear(k)  # tiempos reales de cada palabra → voices/words.json (subtítulos sincronizados)
 
 def partir(path):
     """Corta la toma única en tantas frases como lines.json, por los silencios más largos (en orden)."""

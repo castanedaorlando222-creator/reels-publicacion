@@ -11,10 +11,10 @@ for f in ['kokoro-v1.0.onnx', 'voices-v1.0.bin']:
 from kokoro_onnx import Kokoro
 k = Kokoro(os.path.join(cache, 'kokoro-v1.0.onnx'), os.path.join(cache, 'voices-v1.0.bin'))
 import json
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__))); from pron import pron
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__))); from pron import pron, decir
 plan = json.load(open(sys.argv[1], encoding='utf-8'))
 lines = [re.sub(r'\s+', ' ', (f.get('voz') or f['texto']).replace('*', '')).strip() for f in plan['frases']]
 out, sr = [], 24000
 for l in lines:
-    a, sr = k.create(pron(l), voice='em_alex', speed=1.0, lang='es'); out += [a, np.zeros(int(.3 * sr), np.float32)]
+    a, sr = decir(k, l); out += [a, np.zeros(int(.3 * sr), np.float32)]
 sf.write(sys.argv[2], np.concatenate(out), sr); print(sys.argv[2], len(lines), 'frases')

@@ -236,11 +236,11 @@ export async function run(story, IMG = {}) {
   const logo = src => new Promise(res => { const im = new Image(); im.onload = () => res(im); im.onerror = () => res(null); im.src = src; });
   const LOGO = { orlando: await logo('img/logo-orlando.jpg'), nc: await logo('img/logo-nc.jpg'), codigo: await logo('img/logo-codigo.jpg') };
   // tiempos
-  const T = {}; let tt = .6;
+  const WJ = (await J('voices/words.json')) || {}; const T = {}; let tt = .3;
   for (const L of LINES) { T[L.id] = tt; tt += D(L.id) + (L.gap ?? .4); }
-  const END = tt + 1.6;
+  const END = tt + 0.85;
   const wordsOf = L => { const ws = L.sub.split(/\s+/), n = ws.map(w => w.replace(/[^\p{L}\p{N}]/gu, '').length + 1.5), tot = n.reduce((a, b) => a + b, 0); let acc = 0; const t0 = T[L.id], d = D(L.id);
-    return ws.map((w, i) => { const a = t0 + d * acc / tot; acc += n[i]; return { w, t: a, hl: (L.hl || []).includes(w), red: (L.red || []).includes(w), green: (L.green || []).includes(w), end: /[.,:;?!]$/.test(w) }; }); };
+    return ws.map((w, i) => { let a = t0 + d * acc / tot; acc += n[i]; if (WJ[L.id] && WJ[L.id].length === ws.length) a = t0 + WJ[L.id][i]; return { w, t: a, hl: (L.hl || []).includes(w), red: (L.red || []).includes(w), green: (L.green || []).includes(w), end: /[.,:;?!]$/.test(w) }; }); };
   const wt = (id, word) => { const L = LINES.find(l => l.id === id); if (!L) return 0; const w = wordsOf(L).find(x => x.w.toLowerCase().startsWith(word.toLowerCase())); return w ? w.t : T[id]; };
   const S = { T, D, wt, END, LOGO, IMG };
   const st = story(S);   // {scenes:[{from, draw(t,u), clock?}], tags:[[t,x,y,text,col,size]], red:[[t0,t1]], cierreFrom}
@@ -256,7 +256,7 @@ export async function run(story, IMG = {}) {
   const TAGS = (st.tags || []).map(([t, x, y, text, col = 'y', size = 30, t1 = null]) => ({ t, x, y, text, col, size, t1 }));
   const EV = [];
   for (const L of LINES) EV.push({ t: T[L.id], type: 'voice', id: L.id });
-  scenes.slice(1).forEach(s => EV.push({ t: s.t0, type: 'cut' }));
+  scenes.slice(1).forEach(s => EV.push({ t: s.t0, type: 'cut' })); (st.fx || []).forEach(([t, type]) => EV.push({ t, type }));
   TAGS.forEach(g => EV.push({ t: g.t, type: 'tag', col: g.col }));
   EV.push({ t: cierre, type: 'sting' });
   const redAt = t => Math.max(0, ...(st.red || []).map(([a, b]) => seg(t, a - .2, a + .4) * (1 - seg(t, b - .3, b))));
@@ -279,14 +279,16 @@ export async function run(story, IMG = {}) {
     const g = ctx.createLinearGradient(0, y - h / 2, 0, y + h / 2); g.addColorStop(0, 'rgba(255,235,190,.4)'); g.addColorStop(1, 'rgba(90,60,30,.18)'); ctx.fillStyle = g; ctx.fill();
     let x = W / 2 - tot / 2; for (const p of parts) { const a = seg(t, p.t - .05, p.t + .08); ctx.globalAlpha = .35 + .65 * a; ctx.fillStyle = p.red ? '#9b1c1c' : p.green ? '#1e6b3a' : p.hl ? '#8a4b00' : '#2a1d10'; ctx.fillText(p.w, x, y + 2); x += p.wd + sp; }
     ctx.restore(); ctx.restore(); }
-  function captionKaraoke(c, t) { // subtítulo arriba, palabra que suena dentro de un recuadro con borde (estilo explicador)
-    ctx.save(); let fs = 58; ctx.font = `700 ${fs}px Inter`; ctx.textBaseline = 'middle'; const sp = 16;
+  function captionKaraoke(c, t) { // v2: subtítulo grande arriba con panel oscuro; la palabra que suena va en recuadro lleno que «salta»
+    ctx.save(); let fs = 78; const F = () => ctx.font = `800 ${fs}px Inter`; F(); ctx.textBaseline = 'middle'; const sp = 20;
     let parts = c.map(w => ({ ...w, wd: ctx.measureText(w.w).width })), tot = parts.reduce((a, p) => a + p.wd, 0) + sp * (parts.length - 1);
-    if (tot > 820) { fs = Math.floor(fs * 820 / tot); ctx.font = `700 ${fs}px Inter`; parts = c.map(w => ({ ...w, wd: ctx.measureText(w.w).width })); tot = parts.reduce((a, p) => a + p.wd, 0) + sp * (parts.length - 1); }
-    let x = W / 2 - tot / 2; const y = st.captionY || 400; let cur = -1; parts.forEach((p, i) => { if (t >= p.t - .02) cur = i; });
-    parts.forEach((p, i) => { const on = i <= cur;
-      if (i === cur) { ctx.fillStyle = 'rgba(20,40,110,.75)'; rr(x - 10, y - fs * .62, p.wd + 20, fs * 1.24, 8); ctx.fill(); ctx.strokeStyle = '#ffffff'; ctx.lineWidth = 2.5; ctx.stroke(); for (const [cx, cy] of [[x - 10, y - fs * .62], [x + p.wd + 10, y - fs * .62], [x - 10, y + fs * .62], [x + p.wd + 10, y + fs * .62]]) { ctx.fillStyle = '#fff'; ctx.fillRect(cx - 4, cy - 4, 8, 8); } }
-      ctx.shadowColor = 'rgba(0,0,0,.7)'; ctx.shadowBlur = 10; ctx.fillStyle = !on ? 'rgba(255,255,255,.38)' : p.red ? '#ff6b6b' : p.green ? '#6dffa8' : p.hl ? '#ffd34f' : '#ffffff'; ctx.fillText(p.w, x, y); ctx.shadowBlur = 0; x += p.wd + sp; });
+    if (tot > 860) { fs = Math.floor(fs * 860 / tot); F(); parts = c.map(w => ({ ...w, wd: ctx.measureText(w.w).width })); tot = parts.reduce((a, p) => a + p.wd, 0) + sp * (parts.length - 1); }
+    const y = st.captionY || 400, k = eo(seg(t, c.t0 - .06, c.t0 + .12)); let x = W / 2 - tot / 2; let cur = -1; parts.forEach((p, i) => { if (t >= p.t - .02) cur = i; });
+    ctx.globalAlpha = k; ctx.fillStyle = 'rgba(3,8,26,.72)'; rr(x - 34, y - fs * .82, tot + 68, fs * 1.64, 26); ctx.fill(); ctx.strokeStyle = 'rgba(150,200,255,.28)'; ctx.lineWidth = 2; ctx.stroke(); ctx.globalAlpha = 1;
+    parts.forEach((p, i) => { const on = i <= cur, col = p.red ? '#ff6b6b' : p.green ? '#6dffa8' : p.hl ? '#ffd34f' : '#ffffff';
+      if (i === cur) { const pop = 1 + .1 * (1 - eo(seg(t, p.t - .02, p.t + .16))); ctx.save(); ctx.translate(x + p.wd / 2, y); ctx.scale(pop, pop); ctx.fillStyle = col; ctx.shadowColor = col; ctx.shadowBlur = 22; rr(-p.wd / 2 - 14, -fs * .62, p.wd + 28, fs * 1.24, 14); ctx.fill(); ctx.shadowBlur = 0; ctx.fillStyle = '#06102c'; ctx.fillText(p.w, -p.wd / 2, 2); ctx.restore(); }
+      else { ctx.fillStyle = on ? col : 'rgba(255,255,255,.45)'; ctx.fillText(p.w, x, y + 2); }
+      x += p.wd + sp; });
     ctx.restore(); }
   function caption(t) { const c = CH.find(c => t >= c.t0 && t < c.t1); if (!c) return; if (st.captionStyle === 'papel') return captionPapel(c, t); if (st.captionStyle === 'karaoke') return captionKaraoke(c, t); ctx.save(); let fs = 66; ctx.font = `800 ${fs}px Inter`; ctx.textBaseline = 'middle';
     const sp = 18; let parts = c.map(w => ({ ...w, wd: ctx.measureText(w.w).width })), tot = parts.reduce((a, p) => a + p.wd, 0) + sp * (parts.length - 1);
@@ -305,7 +307,7 @@ export async function run(story, IMG = {}) {
     ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.globalAlpha = 1; ctx.save(); sc.draw(t, u); ctx.restore(); ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.globalAlpha = 1;
     if (sc.id !== 'cierre') { if (st.vignette !== false) vignette(); else if (!st.captionPill) bottomShade(); tint(t); clock(t, sc); for (const g of TAGS) drawTag(g, t, sc); }
     if (!window.NOCAP) logos(sc);
-    const k = scenes.indexOf(sc); if (k > 0) { const d = 1 - seg(t, sc.t0, sc.t0 + .12); if (d > 0) { ctx.fillStyle = `rgba(0,0,0,${d * .8})`; ctx.fillRect(0, 0, W, H); } }
+    const k = scenes.indexOf(sc); if (k > 0 && (!st.noFade || sc.id === 'cierre')) { const d = 1 - seg(t, sc.t0, sc.t0 + .12); if (d > 0) { ctx.fillStyle = `rgba(0,0,0,${d * .8})`; ctx.fillRect(0, 0, W, H); } }
     if (!window.NOCAP) caption(t);
   };
   window.DUR = END; window.EV = EV; window.T = T; window.READY = true;

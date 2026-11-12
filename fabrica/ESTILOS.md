@@ -8,13 +8,15 @@ Cada día, cada marca publica **10 reels**: el bloque de 5 de la tabla (rayos X 
 
 | Casilla | Estilo | Motor | Voz | Ejemplo aprobado |
 |---|---|---|---|---|
-| 1 | **EXPLICADOR «rayos X»**: UN protagonista enorme por plano (cuerpo, órgano, vaso sanguíneo, gráfica, reloj, plato…) en línea de neón sobre azul profundo con partículas; un plano nuevo cada 3–4 s con una sola idea animada; etiquetas en píldora; subtítulos ARRIBA con recuadro en la palabra que suena (`captionStyle: 'karaoke'`). Estoicismo: misma receta en negro y dorado (mente/cerebro, círculos de control, relojes, gráficas, siluetas de neón) | `motor/` + `explicador.js` | Kokoro | `ejemplos/explicador-sueno` |
+| 1 | **EXPLICADOR «rayos X»**: UN protagonista enorme por plano (cuerpo, órgano, vaso sanguíneo, gráfica, reloj, plato…) en línea de neón sobre azul profundo con partículas; un plano nuevo cada 3–4 s con una sola idea animada; etiquetas en píldora; subtítulos ARRIBA con recuadro en la palabra que suena (`captionStyle: 'karaoke'`). Estoicismo: misma receta en negro y dorado (mente/cerebro, círculos de control, relojes, gráficas, siluetas de neón) | `motor/` + `explicador.js` | Kokoro | `ejemplos/explicador-fable` (nivel) y `ejemplos/explicador-sueno` |
 | 2 | **HISTORIA DOCUMENTAL** (estilo «Mandela»): un caso o personaje REAL, fechas y lugares en etiquetas tipo archivo, tono de documental, paleta oscura y dorada, grano | `motor/` | Iván (ElevenLabs) | `ejemplos/doc-mandela` |
 | 3 | **FARO**: una persona ficticia con nombre y edad, de noche (azul profundo), reloj arriba a la izquierda, etiquetas tipo terminal, tinte rojo en el riesgo y verde en la solución | `motor/` | Iván (ElevenLabs) | `ejemplos/faro-ozempic` |
 | 4 | **FARO** (otra vez, con otra persona, otro escenario y otra paleta nocturna que la casilla 3) | `motor/` | Kokoro | `ejemplos/faro-ozempic` |
 | 5 | **PIZARRA**: skill becario-reels, estilo de la rotación | becario-reels | Kokoro | `becario/<marca>/plan-ejemplo.json` (nutrición) |
 
 Rotación de estilos de pizarra (doc `config/estado` del artefacto, campo `proximoEstilo`, índice en `cicloEstilos` = nube, pizarra, noche, menta, limón). Cada reel de pizarra usa el estilo de `proximoEstilo` y lo avanza en 1 (vuelve a 0 tras 4). Nutrición: en «menta» y «nube» acento verde de marca `{"base": "<estilo>", "colores": {"acento": "#1E8449", "acentoTexto": "#FFFFFF"}}`. Estoicismo: en todos `{"base": "<estilo>", "colores": {"acento": "#C9A24A", "acentoTexto": "#0B0906"}}` (dorado).
+
+**Calidad mínima: MOTOR v2** (sección «MOTOR v2» de `motor/GUIA.md`, modelo `ejemplos/explicador-fable`) en las casillas 1–4. Orlando aprobó ese nivel: planos cortos, protagonista enorme, gancho en el fotograma 0, transiciones con zoom, bloom y efectos atados a acciones.
 
 ## Qué tema va a cada casilla
 - **Nutrición**: casillas 1–4 = temas de salud (colección `temas`); casilla 5 (pizarra) = tema de libro (colección `temasLibro`, con la escena final «Libro»). La casilla 2 (documental) necesita una historia real de la ciencia de la nutrición o de un caso documentado relacionado con el tema (p. ej. James Lind y el escorbuto para la vitamina C; Eijkman y el beriberi para la tiamina; Goldberger y la pelagra para la niacina); elige para ella el tema pendiente que mejor se preste.
@@ -30,6 +32,6 @@ Rotación de estilos de pizarra (doc `config/estado` del artefacto, campo `proxi
 - Ganchos: lee `GANCHOS.md` (fórmulas de los primeros 3 segundos sacadas de vidIQ). Usa el campo `gancho` del tema como punto de partida.
 - Honestidad: cifras, fechas, citas y referencias REALES y verificadas con WebSearch antes de usarlas (cita con libro y capítulo cuando sea un estoico). Nada de promesas de curación ni «en X días». Si un tema no se puede tratar con honestidad, márcalo `descartado` con motivo y usa el siguiente.
 - Duración: lo ideal son 30–45 s, pero Orlando acepta reels más largos (hasta ~80 s) cuando la historia lo pide. No recortes contenido bueno solo por la duración.
-- Pronunciación: «reel» se dice «ril» (nunca «re-el»). `voz.py` y `kokoro_full.py` ya lo cambian solos con `motor/pron.py`; para Iván (ElevenLabs) usa el texto de `python3 voz.py texto` o escribe tú «ril»/«rils» en lo que mandes a ElevenLabs. Los subtítulos siguen diciendo «reel».
+- Pronunciación: «reel» se dice «ril» (nunca «re-el»), «YouTube» = «Yútub», «Facebook» = «Féisbuk». `voz.py` y `kokoro_full.py` ya lo cambian solos con `motor/pron.py`; para Iván (ElevenLabs) usa el texto de `python3 voz.py texto` o escribe tú «ril»/«rils» en lo que mandes a ElevenLabs. Los subtítulos siguen diciendo «reel».
 - Español latinoamericano, cercano. 30–45 s: 8–11 frases cortas en el motor; 9–14 en becario-reels.
 - Varía personajes (nombre, edad, sexo, ropa, pelo), escenarios y paletas entre días. Nunca copies las escenas del ejemplo: es modelo de forma y calidad.

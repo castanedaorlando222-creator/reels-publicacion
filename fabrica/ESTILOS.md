@@ -30,5 +30,6 @@ Rotación de estilos de pizarra (doc `config/estado` del artefacto, campo `proxi
 - Ganchos: lee `GANCHOS.md` (fórmulas de los primeros 3 segundos sacadas de vidIQ). Usa el campo `gancho` del tema como punto de partida.
 - Honestidad: cifras, fechas, citas y referencias REALES y verificadas con WebSearch antes de usarlas (cita con libro y capítulo cuando sea un estoico). Nada de promesas de curación ni «en X días». Si un tema no se puede tratar con honestidad, márcalo `descartado` con motivo y usa el siguiente.
 - Duración: lo ideal son 30–45 s, pero Orlando acepta reels más largos (hasta ~80 s) cuando la historia lo pide. No recortes contenido bueno solo por la duración.
+- Pronunciación: «reel» se dice «ril» (nunca «re-el»). `voz.py` y `kokoro_full.py` ya lo cambian solos con `motor/pron.py`; para Iván (ElevenLabs) usa el texto de `python3 voz.py texto` o escribe tú «ril»/«rils» en lo que mandes a ElevenLabs. Los subtítulos siguen diciendo «reel».
 - Español latinoamericano, cercano. 30–45 s: 8–11 frases cortas en el motor; 9–14 en becario-reels.
 - Varía personajes (nombre, edad, sexo, ropa, pelo), escenarios y paletas entre días. Nunca copies las escenas del ejemplo: es modelo de forma y calidad.

@@ -7,6 +7,7 @@ Se ejecuta dentro de la carpeta del reel (donde está lines.json).
 """
 import os, sys, json, subprocess, re, urllib.request
 import numpy as np, soundfile as sf
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__))); from pron import pron
 LINES = json.load(open('lines.json'))
 os.makedirs('voices', exist_ok=True)
 SR = 24000
@@ -26,7 +27,7 @@ def kokoro():
     k = Kokoro(os.path.join(cache, 'kokoro-v1.0.onnx'), os.path.join(cache, 'voices-v1.0.bin'))
     dur = {}
     for L in LINES:
-        a, sr = k.create(L['text'], voice=L.get('voice', 'em_alex'), speed=L.get('speed', 1.0), lang='es')
+        a, sr = k.create(pron(L['text']), voice=L.get('voice', 'em_alex'), speed=L.get('speed', 1.0), lang='es')
         dur[L['id']] = save(L['id'], a, sr); print(L['id'], dur[L['id']])
     json.dump(dur, open('voices/dur.json', 'w'), indent=1)
 
@@ -82,4 +83,4 @@ if __name__ == '__main__':
     cmd = sys.argv[1] if len(sys.argv) > 1 else 'kokoro'
     if cmd == 'kokoro': kokoro()
     elif cmd == 'partir': partir(sys.argv[2])
-    elif cmd == 'texto': print('\n\n'.join(L['text'] for L in LINES))
+    elif cmd == 'texto': print('\n\n'.join(pron(L['text']) for L in LINES))

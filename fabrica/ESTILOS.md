@@ -4,7 +4,7 @@
 
 El estilo LIGHTBOX (`ejemplos/lightbox-seneca`) queda en reserva: no se usa salvo que Orlando lo pida.
 
-Cada día, cada marca publica **10 reels**: el bloque de 5 de la tabla (rayos X → Mandela → faro → faro → pizarra) **dos veces** (casillas 01–05 y 06–10). **Voz de Iván solo en 2 de cada 10: las casillas 02 y 07 (los dos Mandela); las otras 8 con Kokoro** (en la tabla, lee «casilla 3» como Kokoro). Nutrición: casillas 05 y 10 = temas de libro (dos libros distintos); el resto, temas de salud. Los 10 temas del día deben ser distintos entre sí y variados (no dos del mismo alimento o idea). Google Flow está en pausa (FLOW.md queda para más adelante).
+Cada día, cada marca publica **10 reels** (cambio del 16 nov, aprobado por Orlando con los datos de Metricool: los documentales rinden menos y el segundo se cambia por un faro). Orden de las casillas: **01 rayos X · 02 HISTORIA DOCUMENTAL (Iván) · 03 faro · 04 faro · 05 pizarra · 06 rayos X · 07 FARO con voz de Iván · 08 faro · 09 faro · 10 pizarra** — es decir, el bloque de la tabla dos veces, pero en la casilla 07 va un FARO (no documental). **Voz de Iván solo en 02 y 07; las otras 8 con Kokoro** (en la tabla, lee «casilla 3» como Kokoro). Nutrición: casillas 05 y 10 = temas de libro (dos libros distintos); el resto, temas de salud. Los 10 temas del día deben ser distintos entre sí y variados. Google Flow está en pausa (FLOW.md queda para más adelante).
 
 | Casilla | Estilo | Motor | Voz | Ejemplo aprobado |
 |---|---|---|---|---|
@@ -18,8 +18,13 @@ Rotación de estilos de pizarra (doc `config/estado` del artefacto, campo `proxi
 
 **Calidad mínima: MOTOR v2** (sección «MOTOR v2» de `motor/GUIA.md`, modelo `ejemplos/explicador-fable`) en las casillas 1–4. Orlando aprobó ese nivel: planos cortos, protagonista enorme, gancho en el fotograma 0, transiciones con zoom, bloom y efectos atados a acciones.
 
+## Público (datos reales de Metricool, 16 nov) — escribe para ellos
+- **Nutrición**: sobre todo **mujeres de 35 a 64 años** (Instagram: ~3 de cada 4 seguidores con género conocido son mujeres; YouTube 55 % mujeres, 25–54 años), de **Venezuela, Colombia, México, Argentina y EE. UU.** (YouTube: México 22 %, EE. UU. 11 %). Prioriza temas que les importan: menopausia y peso, inflamación, sueño, tiroides, glucosa, articulaciones, cabello y piel, digestión, energía, remedios y alimentos caseros de América Latina. En los FARO, la protagonista suele ser una **mujer de 40 a 60 años** (alterna con hombres a veces). Lenguaje cálido y práctico.
+- **YouTube de Nutrición llega sobre todo por BÚSQUEDA** (más que por el feed de Shorts): el título de YouTube debe ser lo que la gente escribe en el buscador, con la palabra clave al inicio y en forma de pregunta o problema («¿Qué pasa si tomas agua con limón en ayunas?», «Remedio casero para la inflamación del estómago»). Evita títulos crípticos o de historia («1943: el riñón…»).
+- **El Código**: **80 % hombres de 25 a 54 años**, de **México, Argentina y España** (luego Perú, Colombia, EE. UU.); llegan por el feed de Shorts. En los FARO, el protagonista suele ser un **hombre de 25 a 50** con problemas reales (trabajo, dinero, pareja, disciplina, ira, ansiedad). Frases directas tipo «Lo que te frena es el camino» funcionan mejor que las historias largas.
+
 ## Qué tema va a cada casilla
-- **Nutrición**: casillas 1–4 = temas de salud (colección `temas`); casilla 5 (pizarra) = tema de libro (colección `temasLibro`, con la escena final «Libro»). La casilla 2 (documental) necesita una historia real de la ciencia de la nutrición o de un caso documentado relacionado con el tema (p. ej. James Lind y el escorbuto para la vitamina C; Eijkman y el beriberi para la tiamina; Goldberger y la pelagra para la niacina); elige para ella el tema pendiente que mejor se preste.
+- **Nutrición** (la casilla 07 sigue la regla de las casillas 3–4): casillas 1–4 = temas de salud (colección `temas`); casilla 5 (pizarra) = tema de libro (colección `temasLibro`, con la escena final «Libro»). La casilla 2 (documental) necesita una historia real de la ciencia de la nutrición o de un caso documentado relacionado con el tema (p. ej. James Lind y el escorbuto para la vitamina C; Eijkman y el beriberi para la tiamina; Goldberger y la pelagra para la niacina); elige para ella el tema pendiente que mejor se preste.
 - **Estoicismo**: las 5 casillas de `temasEstoicismo`. Temas con `formato: "historia"` → casilla 2 (personaje histórico real) o 3–4 (persona actual ficticia que aplica la idea); temas `"pintura"` → casillas 1 y 5 (o 3–4).
 - El protagonista de cada plano ocupa al menos el 60 % del ancho. Nada de figuras pequeñas en medio de fondo vacío: si un plano se ve vacío en la hoja de fotos, agranda o cambia la idea.
 

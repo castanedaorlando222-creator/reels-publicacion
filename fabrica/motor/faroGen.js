@@ -15,10 +15,10 @@ export function faro(L, S, spec) {
     else if (sc.kind === 'laptop') { L.person(540, 330, 1.35, 'stand', t, look); L.desk(1000); L.laptop(540, 1000, t, (w, h) => { ctx.fillStyle = sc.screen?.[0] || '#d9534f'; ctx.fillRect(0, 0, w, 44); ctx.fillStyle = '#fff'; ctx.font = '700 22px Inter'; ctx.fillText(sc.head || '', 20, 30); ctx.fillStyle = '#20232c'; ctx.font = '700 30px Inter'; (sc.body || []).forEach((l, i) => ctx.fillText(l, 24, 110 + i * 56)); }); }
     else if (sc.kind === 'think') { L.person(460, 300, 1.6 * ps, 'think', t, look); L.thought(830, 360, t, sc.emoji || '…', eo(seg(t, t0 + .3, t0 + .8))); }
     else if (sc.kind === 'window') { L.windowView(t, 160, 240, 760, 820); ctx.fillStyle = '#0e1a3a'; ctx.fillRect(0, 1060, 1080, 860); L.person(540, 760, 1.1, 'back', t, look); }
-    else if (sc.kind === 'quote') { L.spotlightTable(540, 1250, 330); L.person(540, 640, 1.0, 'think', t, look); }
-    else if (sc.kind === 'list') { L.person(540, 250, 1.25, 'stand', t, look); }
+    else if (sc.kind === 'quote') { L.spotlightTable(540, 1250, 330); L.person(540, 700, 1.15, 'think', t, look); }
+    else if (sc.kind === 'list') { L.person(540, 230, 1.45, 'stand', t, look); }
     else if (sc.kind === 'happy') { L.glow(540, 800, 520, 'rgba(120,255,180,0.18)'); L.person(540, 330, 1.7, 'happy', t, look); }
-    else if (sc.kind === 'chart') { L.person(540, 300, 1.2, 'think', t, look); }
+    else if (sc.kind === 'chart') { L.person(540, 250, 1.45, 'think', t, look); }
     else L.person(px, py, ps, sc.pose || 'stand', t, look);
     ctx.restore();
     if (sc.kind === 'phone') L.typeBox(580, 430, 450, t, t0 + .4, sc.title || 'MENSAJE', sc.text || '', sc.col || '#5ee08a');
@@ -29,6 +29,6 @@ export function faro(L, S, spec) {
     if (sc.stamp) V.stamp(sc.stamp[0], 540, sc.stampY ?? 1000, 90, V.on(t, when(sc.stamp[1]), .25), sc.stamp[2] || '#ff3b55', -.1);
     V.bloom(.35);
   } }));
-  if (spec.hook) { const s0 = scenes[0], d0 = s0.draw; s0.draw = (t, u) => { d0(t, u); V.slam(spec.hook.parts, 540, spec.hook.y ?? 1160, spec.hook.size ?? 96, V.on(t, 0.15, .3)); }; }
+  if (spec.hook) { const s0 = scenes[0], d0 = s0.draw; s0.draw = (t, u) => { d0(t, u); V.slam(spec.hook.parts, 540, spec.hook.y ?? 1160, spec.hook.size ?? 96, Math.max(.6, V.on(t, 0, .25))); }; }
   return { scenes, tags: spec.tags || [], red: spec.red || [], cierreFrom: spec.cierreFrom, marca: 'codigo', noFade: true, vignette: spec.vignette ?? true, fx: spec.fx || [] };
 }

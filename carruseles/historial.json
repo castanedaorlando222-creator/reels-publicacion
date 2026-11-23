@@ -19,5 +19,41 @@
   "hora": "18:45",
   "titulo": "5 reglas de Marco Aurelio para los días difíciles",
   "tema": "Marco Aurelio: Med. 2.1, 4.3, 5.20, 6.6, 4.17"
+ },
+ {
+  "fecha": "2026-11-24",
+  "marca": "nutricion",
+  "titulo": "5 alimentos que te ayudan a desinflamar",
+  "tema": "antiinflamatorios: salmón, aceite de oliva extra virgen, frutos rojos, nueces, jengibre"
+ },
+ {
+  "fecha": "2026-11-24",
+  "marca": "nutricion",
+  "titulo": "5 señales de que te podría faltar hierro",
+  "tema": "señales de déficit de hierro: cansancio, palidez, uñas, cabello, falta de aire"
+ },
+ {
+  "fecha": "2026-11-24",
+  "marca": "nutricion",
+  "titulo": "5 infusiones que te ayudan a relajarte antes de dormir",
+  "tema": "infusiones para dormir: manzanilla, tila, melisa, pasiflora, valeriana"
+ },
+ {
+  "fecha": "2026-11-24",
+  "marca": "nutricion",
+  "titulo": "5 mitos de la alimentación que sigues creyendo",
+  "tema": "mitos: fruta de noche, huevo y colesterol, pan integral, light, saltarse comidas"
+ },
+ {
+  "fecha": "2026-11-24",
+  "marca": "codigo",
+  "titulo": "5 reglas de Epicteto para que nadie controle tu mente",
+  "tema": "Epicteto: Enquiridión 1, 5, 20, 8, 33 (autocontrol ante provocaciones)"
+ },
+ {
+  "fecha": "2026-11-24",
+  "marca": "codigo",
+  "titulo": "5 hábitos diarios de los estoicos que te hacen fuerte",
+  "tema": "hábitos: Marco Aurelio Med. 5.1, Séneca Carta 18, Musonio 18A y 5, Séneca Sobre la ira III.36"
  }
 ]

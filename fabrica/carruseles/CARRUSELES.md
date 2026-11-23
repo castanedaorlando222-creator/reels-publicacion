@@ -1,0 +1,37 @@
+# Producción diaria: 4 carruseles de Nutrición, hechos y programados en Metricool
+
+Lo ejecuta una tarea programada, sin nadie mirando: no hagas preguntas, decide y sigue. Todo en español.
+FECHA = **mañana** (hora de Managua). Se producen los 4 carruseles de FECHA y se dejan programados.
+
+## 0. Preparación
+1. `git clone https://github.com/castanedaorlando222-creator/reels-publicacion ~/rp` (si falla por permisos: `mcp__claude-code-remote__add_repo` owner `castanedaorlando222-creator`, repo `reels-publicacion`, access `push`, y repite).
+   `git config user.name "Fabrica de carruseles"; git config user.email "castanedaorlando222@gmail.com"`. Haz `git pull --rebase` antes de cada push (las tareas de reels escriben en el mismo repo).
+2. Si `~/rp/carruseles/FECHA/` ya tiene 4 carpetas con `programado.txt`, termina sin hacer nada.
+3. Lee `~/rp/carruseles/historial.json` (lista de `{fecha, titulo, tema}`): NUNCA repitas un tema ya publicado (mismo alimento/planta + mismo beneficio = repetido).
+4. Fuentes, logo y generador ya están en `~/rp/fabrica/carruseles/` (`generar.py`, `fonts/`). Solo hace falta Pillow.
+
+## 1. Temas virales (vidIQ)
+- Una o dos llamadas a `mcp__vidIQ_for_Claude__vidiq_instagram_tiktok_outlier_search` (5 créditos cada una), `descriptionLanguage: ["es"]`,
+  `audienceQuery: "Culture/Region: Latinoamérica y España, hispanohablantes; Global: true; Demographics: adultos 30-65 interesados en salud natural, nutrición, plantas medicinales, remedios caseros;"`,
+  `query` sobre alimentos/plantas/nutrición (varía la query cada día: p. ej. "alimentos que desinflaman", "plantas medicinales beneficios", "errores al comer", "vitaminas deficiencia señales").
+- Con lo que está funcionando, elige 4 temas de carrusel distintos entre sí y del historial. Mezcla formatos: listas de alimentos/plantas («5 alimentos que…»), señales de deficiencia, errores comunes, comparativas, mitos vs realidad.
+- **Afirmaciones prudentes y verdaderas**: «ayuda», «apoya», «contiene»; nunca «cura», «elimina el cáncer», porcentajes milagro ni promesas médicas. Datos que sepas con seguridad.
+
+## 2. Producir cada carrusel (NN = 01…04)
+1. Escribe `~/rp/carruseles/FECHA/NN-slug/spec.json` (formato en el docstring de `generar.py`): gancho fuerte en `titulo` con 1–2 palabras clave entre `*asteriscos*` (amarillo), `etiqueta` corta en mayúsculas, 4–6 `items` (nombre corto, `texto` de 1–2 frases con una palabra clave entre asteriscos, `consejo_titulo` + `consejo` práctico), `cierre_titulo` y `cierre_texto`.
+2. Foto de portada (UNA sola por carrusel): pide las 4 juntas en una sola llamada a `mcp__vidIQ_for_Claude__vidiq_image_generate` (`aspectRatio: "9:16"`, 22 créditos por imagen). Prompt: fotografía profesional de comida/plantas del tema, vertical, colores intensos, gotas de agua, luz lateral dramática, fondo oscuro, espacio oscuro vacío en el tercio inferior, sin texto. Consulta `vidiq_job_poll` hasta `completed`.
+3. El servidor de vidIQ está bloqueado desde aquí: pasa cada imagen por ElevenLabs:
+   `mcp__ElevenLabs__creative_create_flow` (una vez) → `mcp__ElevenLabs__creative_attach_reference_file` con `url` = imageUrl y ese `flow_id` → `mcp__ElevenLabs__creative_get_available_assets` con los `asset_ids` → descarga cada `preview_url` con curl (es la foto a ~1024 px) → convierte a JPG con Pillow: `foto.jpg` en la carpeta del carrusel.
+4. `python3 ~/rp/fabrica/carruseles/generar.py spec.json foto.jpg .` → crea `01.jpg … NN.jpg`.
+5. Revisa con Read al menos la portada y una slide interior de cada carrusel (que el texto no se salga ni se encime). Corrige el spec y regenera si hace falta.
+6. Commit y push de las 4 carpetas (con `git pull --rebase` antes). Comprueba que `https://raw.githubusercontent.com/castanedaorlando222-creator/reels-publicacion/main/carruseles/FECHA/NN-slug/01.jpg` da 200.
+
+## 3. Programar en Metricool
+- Marca `Nutricion conciente`, blogId `7908754`, zona `America/New_York`.
+- Horarios de FECHA (hora de Nueva York): 01 → 10:00, 02 → 12:00, 03 → 15:00, 04 → 17:00.
+- Redes: `facebook` (facebookData `{"type":"POST"}`) y `tiktok` (tiktokData con `title` = gancho sin asteriscos, máx. 90 caracteres, `photoCoverIndex` 0, `autoAddMusic` false, `privacyOption` "PUBLIC_TO_EVERYONE"). Llama antes a `getBrandSettings`: si la marca ya tiene `instagramData`, añade también `instagram` (instagramData `{"type":"POST"}`).
+- `media` = las URLs raw de GitHub de las slides, en orden. `text` = 2–4 frases con emoji moderado + llamada a guardar/compartir + 4–6 hashtags (#nutricionconsciente siempre).
+- Guarda el `plannerUrl` en `programado.txt` dentro de la carpeta. Añade cada carrusel a `carruseles/historial.json` y haz commit + push.
+
+## 4. Informe
+Envía un mensaje corto con `SendUserMessage`: los 4 títulos con su hora, y cualquier problema (p. ej. créditos de vidIQ bajos: consulta `vidiq_balance` al final y avisa si quedan menos de 300).

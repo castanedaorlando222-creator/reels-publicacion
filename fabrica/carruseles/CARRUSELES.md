@@ -1,7 +1,7 @@
 # Producción diaria: 4 carruseles de Nutrición, hechos y programados en Metricool
 
 Lo ejecuta una tarea programada, sin nadie mirando: no hagas preguntas, decide y sigue. Todo en español.
-FECHA = **mañana** (hora de Managua). Se producen los 4 carruseles de FECHA y se dejan programados.
+FECHA = **mañana** en hora de Managua (UTC−6 fijo). Calcúlala SOLO con `python3 -c "from datetime import datetime,timedelta,timezone; print((datetime.now(timezone(timedelta(hours=-6)))+timedelta(days=1)).date())"`. Se producen los 4 carruseles de FECHA y se dejan programados.
 
 ## 0. Preparación
 1. `git clone https://github.com/castanedaorlando222-creator/reels-publicacion ~/rp` (si falla por permisos: `mcp__claude-code-remote__add_repo` owner `castanedaorlando222-creator`, repo `reels-publicacion`, access `push`, y repite).
@@ -28,8 +28,8 @@ FECHA = **mañana** (hora de Managua). Se producen los 4 carruseles de FECHA y s
 
 ## 3. Programar en Metricool
 - Marca `Nutricion conciente`, blogId `7908754`, zona `America/New_York`.
-- Horarios de FECHA (hora de Nueva York): 01 → 10:00, 02 → 12:00, 03 → 15:00, 04 → 17:00.
-- Redes: `facebook` (facebookData `{"type":"POST"}`) y `tiktok` (tiktokData con `title` = gancho sin asteriscos, máx. 90 caracteres, `photoCoverIndex` 0, `autoAddMusic` false, `privacyOption` "PUBLIC_TO_EVERYONE"). Llama antes a `getBrandSettings`: si la marca ya tiene `instagramData`, añade también `instagram` (instagramData `{"type":"POST"}`).
+- Horarios de FECHA (hora de Nueva York): 01 → 11:00, 02 → 14:00, 03 → 16:00, 04 → 19:00 (no coinciden con los reels, que salen a las 08:00, 10:00, 12:30, 15:00, 17:30 y 20:00).
+- Redes: `facebook` (facebookData `{"type":"POST"}`), `instagram` (instagramData `{"type":"POST","isAiGenerated":true}` — la portada es de IA) y `tiktok` (tiktokData con `title` = gancho sin asteriscos, máx. 90 caracteres, `photoCoverIndex` 0, `autoAddMusic` false, `privacyOption` "PUBLIC_TO_EVERYONE"). Si una red da error, programa con las demás y dilo en el informe.
 - `media` = las URLs raw de GitHub de las slides, en orden. `text` = 2–4 frases con emoji moderado + llamada a guardar/compartir + 4–6 hashtags (#nutricionconsciente siempre).
 - Guarda el `plannerUrl` en `programado.txt` dentro de la carpeta. Añade cada carrusel a `carruseles/historial.json` y haz commit + push.
 

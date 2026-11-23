@@ -1,3 +1,23 @@
 [
-  {"fecha": "2026-11-23", "hora": "11:00", "titulo": "5 alimentos que tu hígado te va a agradecer", "tema": "alimentos para el hígado: alcachofa, remolacha, brócoli, ajo, cúrcuma"}
+ {
+  "fecha": "2026-11-23",
+  "hora": "11:00",
+  "titulo": "5 alimentos que tu hígado te va a agradecer",
+  "tema": "alimentos para el hígado: alcachofa, remolacha, brócoli, ajo, cúrcuma",
+  "marca": "nutricion"
+ },
+ {
+  "marca": "codigo",
+  "fecha": "2026-11-23",
+  "hora": "11:15",
+  "titulo": "5 reglas de Séneca para que nada te robe la paz",
+  "tema": "Séneca: imaginación, tiempo, deseo, Carta 28, rumbo"
+ },
+ {
+  "marca": "codigo",
+  "fecha": "2026-11-23",
+  "hora": "18:45",
+  "titulo": "5 reglas de Marco Aurelio para los días difíciles",
+  "tema": "Marco Aurelio: Med. 2.1, 4.3, 5.20, 6.6, 4.17"
+ }
 ]

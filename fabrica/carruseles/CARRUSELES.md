@@ -1,4 +1,4 @@
-# Producción diaria: 4 carruseles de Nutrición, hechos y programados en Metricool
+# Producción diaria: 4 carruseles de Nutrición + 2 de El Código, hechos y programados en Metricool
 
 Lo ejecuta una tarea programada, sin nadie mirando: no hagas preguntas, decide y sigue. Todo en español.
 FECHA = **mañana** en hora de Managua (UTC−6 fijo). Calcúlala SOLO con `python3 -c "from datetime import datetime,timedelta,timezone; print((datetime.now(timezone(timedelta(hours=-6)))+timedelta(days=1)).date())"`. Se producen los 4 carruseles de FECHA y se dejan programados.
@@ -6,7 +6,7 @@ FECHA = **mañana** en hora de Managua (UTC−6 fijo). Calcúlala SOLO con `pyth
 ## 0. Preparación
 1. `git clone https://github.com/castanedaorlando222-creator/reels-publicacion ~/rp` (si falla por permisos: `mcp__claude-code-remote__add_repo` owner `castanedaorlando222-creator`, repo `reels-publicacion`, access `push`, y repite).
    `git config user.name "Fabrica de carruseles"; git config user.email "castanedaorlando222@gmail.com"`. Haz `git pull --rebase` antes de cada push (las tareas de reels escriben en el mismo repo).
-2. Si `~/rp/carruseles/FECHA/` ya tiene 4 carpetas con `programado.txt`, termina sin hacer nada.
+2. Si `~/rp/carruseles/FECHA/` ya tiene 6 carpetas con `programado.txt` (4 de nutrición + 2 `codigo-*`), termina sin hacer nada; si hay algunas, haz solo las que falten.
 3. Lee `~/rp/carruseles/historial.json` (lista de `{fecha, titulo, tema}`): NUNCA repitas un tema ya publicado (mismo alimento/planta + mismo beneficio = repetido).
 4. Fuentes, logo y generador ya están en `~/rp/fabrica/carruseles/` (`generar.py`, `fonts/`). Solo hace falta Pillow.
 
@@ -34,4 +34,13 @@ FECHA = **mañana** en hora de Managua (UTC−6 fijo). Calcúlala SOLO con `pyth
 - Guarda el `plannerUrl` en `programado.txt` dentro de la carpeta. Añade cada carrusel a `carruseles/historial.json` y haz commit + push.
 
 ## 4. Informe
-Envía un mensaje corto con `SendUserMessage`: los 4 títulos con su hora, y cualquier problema (p. ej. créditos de vidIQ bajos: consulta `vidiq_balance` al final y avisa si quedan menos de 300).
+Envía un mensaje corto con `SendUserMessage`: los 6 títulos (4 de Nutrición y 2 de El Código) con su hora, y cualquier problema (p. ej. créditos de vidIQ bajos: consulta `vidiq_balance` al final y avisa si quedan menos de 300).
+
+## 5. El Código de los Mejores (2 carruseles diarios, estoicismo)
+- Mismo proceso, en carpetas `~/rp/carruseles/FECHA/codigo-NN-slug/`, con `"marca": "codigo"` en el spec (negro y dorado, logo de El Código). Cada item lleva `"fuente"` (obra y capítulo/carta/libro) y `consejo_titulo: "APLÍCALO HOY"`.
+- Público: 80 % hombres de 25 a 54 años de México, Argentina y España. Frases directas. Formato que más se viraliza: «N reglas de <filósofo> para…» (Séneca, Marco Aurelio, Epicteto, Musonio Rufo, Catón, Zenón…), también «errores que te roban la paz», «hábitos de los estoicos». No repitas filósofo + enfoque del historial (`marca: "codigo"`); alterna filósofos.
+- Temas virales: una llamada a `vidiq_instagram_tiktok_outlier_search` con query sobre estoicismo/disciplina/mentalidad y `audienceQuery: "Culture/Region: México, Argentina, España; Global: false; Demographics: hombres 25-54 interesados en estoicismo, disciplina, autosuperación;"`.
+- **Citas REALES y verificadas con WebSearch** antes de usarlas, con obra y capítulo correctos. Si no puedes confirmar la referencia exacta de una cita, cámbiala por otra que sí puedas confirmar. Nada de frases apócrifas (p. ej. «tienes poder sobre tu mente, no sobre los acontecimientos» NO es una cita literal).
+- Portada: busto o estatua clásica del filósofo, luz dorada lateral, fondo negro, polvo dorado, mitad superior, tercio inferior oscuro vacío, sin texto (va en la misma llamada de `vidiq_image_generate` que las de nutrición: 6 imágenes en total).
+- Metricool: marca `El Codigo de los Mejores`, blogId `7949546`, zona `America/New_York`, SOLO `facebook` (facebookData `{"type":"POST"}`; YouTube no admite carruseles). Horas de FECHA: codigo-01 → 11:15, codigo-02 → 18:45. Texto sin emojis, 2–3 frases con tono directo + 4–5 hashtags (#estoicismo #elcodigodelosmejores siempre).
+- Añádelos al historial con `"marca": "codigo"`.

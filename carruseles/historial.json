@@ -55,5 +55,47 @@
   "marca": "codigo",
   "titulo": "5 hábitos diarios de los estoicos que te hacen fuerte",
   "tema": "hábitos: Marco Aurelio Med. 5.1, Séneca Carta 18, Musonio 18A y 5, Séneca Sobre la ira III.36"
+ },
+ {
+  "fecha": "2026-11-25",
+  "marca": "nutricion",
+  "hora": "11:00",
+  "titulo": "5 errores con el café que te roban energía",
+  "tema": "errores con el café: tomarlo tarde, azúcar, como desayuno, exceso de tazas, con la comida (hierro)"
+ },
+ {
+  "fecha": "2026-11-25",
+  "marca": "nutricion",
+  "hora": "14:00",
+  "titulo": "5 aguas naturales para dejar los refrescos",
+  "tema": "aguas naturales: jamaica, limón y menta, pepino y limón, canela, té verde frío"
+ },
+ {
+  "fecha": "2026-11-25",
+  "marca": "nutricion",
+  "hora": "16:00",
+  "titulo": "5 alimentos que cuidan tu cerebro",
+  "tema": "cerebro y memoria: pescado azul, huevo, arándanos, hojas verdes, cacao puro"
+ },
+ {
+  "fecha": "2026-11-25",
+  "marca": "nutricion",
+  "hora": "19:00",
+  "titulo": "5 señales de que te podría faltar vitamina B12",
+  "tema": "señales de déficit de B12: cansancio, hormigueo, memoria, lengua, ánimo"
+ },
+ {
+  "fecha": "2026-11-25",
+  "marca": "codigo",
+  "hora": "11:15",
+  "titulo": "5 reglas de Séneca para dominar la ira",
+  "tema": "Séneca, Sobre la ira: I.1, II.29, II.10, III.13, II.36"
+ },
+ {
+  "fecha": "2026-11-25",
+  "marca": "codigo",
+  "hora": "18:45",
+  "titulo": "5 reglas de Marco Aurelio para tratar con gente difícil",
+  "tema": "Marco Aurelio gente difícil: Med. 7.26, 9.42, 4.11, 8.59, 11.18"
  }
 ]

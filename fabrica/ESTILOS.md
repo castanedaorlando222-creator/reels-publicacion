@@ -6,7 +6,7 @@ El estilo LIGHTBOX (`ejemplos/lightbox-seneca`) queda en reserva: no se usa salv
 
 **Desde el 22 nov (aprobado por Orlando tras el repaso del 20 nov): cada marca publica 6 reels al día** (con 10 al día las redes dejaban de mostrarlos).
 - **Nutrición (6):** 01 rayos X · 02 HISTORIA DOCUMENTAL «Mandela» (Iván) · 03 faro · 04 pizarra (tema de libro) · 05 FARO (Iván) · 06 rayos X. Temas de salud en todas menos la 04.
-- **El Código (6, sin documental):** 01 rayos X negro y dorado · 02 **REGLAS** (Iván) · 03 faro · 04 pizarra · 05 FARO (Iván) · 06 **REGLAS** (Kokoro).
+- **El Código — EN PAUSA hasta que Orlando confirme (sigue con 10 al día como dice su tarea: 01 rayos X · 02 documental (Iván) · 03 faro · 04 faro · 05 pizarra · 06 rayos X · 07 FARO (Iván) · 08 faro · 09 faro · 10 pizarra). Propuesta pendiente de 6:** 01 rayos X negro y dorado · 02 **REGLAS** (Iván) · 03 faro · 04 pizarra · 05 FARO (Iván) · 06 **REGLAS** (Kokoro).
 - **REGLAS** (estilo nuevo, El Código): reel corto de **15–25 s**, motor v2 en negro y dorado. El filósofo (busto o estatua de neón/dorado) grande arriba; las 3–5 reglas o frases aparecen una a una, numeradas, en letra enorme con golpe (`V.slam`) y una cita breve con obra y capítulo en etiqueta pequeña. Gancho en el fotograma 0 («Las reglas de Séneca para que nada te robe la paz»). Usa temas con formato «pintura». Es el formato que más se viraliza (vidIQ 20 nov: 96K–1,3M vistas).
 - **Voz de Iván solo en 02 y 05; el resto con Kokoro.** Los temas del día deben ser distintos entre sí y variados. Google Flow en pausa.
 

@@ -97,5 +97,47 @@
   "hora": "18:45",
   "titulo": "5 reglas de Marco Aurelio para tratar con gente difícil",
   "tema": "Marco Aurelio gente difícil: Med. 7.26, 9.42, 4.11, 8.59, 11.18"
+ },
+ {
+  "fecha": "2026-11-26",
+  "marca": "nutricion",
+  "hora": "11:00",
+  "titulo": "5 alimentos que te pueden quitar el sueño",
+  "tema": "evitar antes de dormir: picante, fritos, alcohol, postres dulces, chocolate/té/cola"
+ },
+ {
+  "fecha": "2026-11-26",
+  "marca": "nutricion",
+  "hora": "14:00",
+  "titulo": "5 alimentos que ayudan a tu digestión",
+  "tema": "digestión: papaya, kiwi, yogur/kéfir, avena, jengibre"
+ },
+ {
+  "fecha": "2026-11-26",
+  "marca": "nutricion",
+  "hora": "16:00",
+  "titulo": "5 alimentos ricos en magnesio",
+  "tema": "magnesio: semillas de calabaza, almendras, espinacas, aguacate, chocolate negro"
+ },
+ {
+  "fecha": "2026-11-26",
+  "marca": "nutricion",
+  "hora": "19:00",
+  "titulo": "5 hábitos que te hinchan la barriga",
+  "tema": "hinchazón: comer rápido, bebidas con gas, chicle, exceso de sal, pajita"
+ },
+ {
+  "fecha": "2026-11-26",
+  "marca": "codigo",
+  "hora": "11:15",
+  "titulo": "5 reglas de Epicteto para forjar disciplina",
+  "tema": "Epicteto disciplina: Discursos III.23, II.18, I.24, I.15, Enquiridión 51"
+ },
+ {
+  "fecha": "2026-11-26",
+  "marca": "codigo",
+  "hora": "18:45",
+  "titulo": "5 reglas de Musonio Rufo para volverte duro",
+  "tema": "Musonio Rufo dureza: Disertaciones 6, 7, 10, 19, Fragmento 51"
  }
 ]

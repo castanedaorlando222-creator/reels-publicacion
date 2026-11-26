@@ -139,5 +139,41 @@
   "hora": "18:45",
   "titulo": "5 reglas de Musonio Rufo para volverte duro",
   "tema": "Musonio Rufo dureza: Disertaciones 6, 7, 10, 19, Fragmento 51"
+ },
+ {
+  "fecha": "2026-11-27",
+  "titulo": "5 semillas pequeñas con grandes beneficios",
+  "tema": "semillas: chía, linaza, girasol, ajonjolí, cáñamo",
+  "marca": "nutricion"
+ },
+ {
+  "fecha": "2026-11-27",
+  "titulo": "5 alimentos que cuidan tu corazón",
+  "tema": "corazón: legumbres, avena, almendras, tomate, ajo",
+  "marca": "nutricion"
+ },
+ {
+  "fecha": "2026-11-27",
+  "titulo": "5 frutas que te ayudan a ir al baño",
+  "tema": "frutas con fibra/estreñimiento: ciruela pasa, pera, guayaba, frambuesas, manzana con piel",
+  "marca": "nutricion"
+ },
+ {
+  "fecha": "2026-11-27",
+  "titulo": "5 señales de que te falta agua",
+  "tema": "deshidratación: orina oscura, dolor de cabeza, cansancio, boca seca, estreñimiento",
+  "marca": "nutricion"
+ },
+ {
+  "fecha": "2026-11-27",
+  "marca": "codigo",
+  "titulo": "5 reglas de Marco Aurelio para dejar de perder el tiempo",
+  "tema": "Marco Aurelio tiempo: Med. 2.4, 2.5, 4.24, 4.18, 10.16"
+ },
+ {
+  "fecha": "2026-11-27",
+  "marca": "codigo",
+  "titulo": "5 reglas de Séneca para que el dinero no te domine",
+  "tema": "Séneca dinero: Cartas 2, 16, 5, 9, Sobre la vida feliz 26"
  }
 ]
